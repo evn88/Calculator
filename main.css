@@ -1,0 +1,397 @@
+.body {
+    position: relative;
+    background: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #7d7d7d;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+.site-body {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    padding: 80px 10px 85px 10px;
+}
+
+.title-box {
+    position: relative;
+    font-size: 30px;
+    font-weight: 800;
+    color: #282828;
+    text-transform: uppercase;
+    font-family: 'Raleway';
+    line-height: 1.2;
+}
+
+.title-box:after {
+    display: block;
+    content: '';
+    width: 56px;
+    height: 4px;
+    background: #277ddd;
+    margin-top: 22px;
+}
+
+.inform-page {
+    margin-top: 45px;
+    padding-top: 0;
+    width: 1200px;
+    background: #e7eff6;
+    padding-bottom: 40px;
+}
+
+#first {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 0 40px 0 40px;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    width: 500px;
+}
+
+.right {
+    position: relative;
+    width: 500px;
+}
+
+select {
+    font-size: 16px;
+    border: #59778c 1px solid;
+    padding: 10px;
+    height: 50px;
+}
+
+.input {
+    border: #59778c 1px solid;
+    padding: 15px;
+    background: white;
+    color: black;
+    font-size: 16px;
+}
+
+#first .input_1 {
+    border: #59778c 1px solid;
+    padding: 15px 15px 19px 15px;
+    background: white;
+    color: black;
+    font-size: 16px;
+}
+
+#first .input_1 input {
+    border: none;
+    border-bottom: #a3a3a3 1px solid;
+    height: 28px;
+    width: 100px;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+.input .safe {
+    padding: 0;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    color: #0d3959;
+}
+
+.input .safe input {
+    position: relative;
+    left: auto;
+}
+
+span .jd-radio {
+    display: none;
+}
+
+#second {
+    position: relative;
+    padding: 0 40px 0 40px;
+}
+
+.check input {
+    position: absolute;
+    left: -9999px;
+}
+
+.jq-checkbox {
+    display: inline-block;
+    position: relative;
+    width: 25px;
+    height: 25px;
+    background: url("img/checkbox.png") no-repeat;
+    top: -2px;
+}
+
+.jq-checkbox:checked {
+    background-position: -25px 0;
+}
+
+.check p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #0d3959;
+    margin: 0;
+}
+
+.check ul {
+    padding: 15px 0 0 25px;
+    text-align: justify;
+    list-style: circle;
+    color: black;
+}
+
+.check li {
+    padding-top: 10px;
+}
+
+#third {
+    position: relative;
+    padding: 0 40px 0 40px;
+    margin-top: 30px;
+}
+
+.calc {
+    margin-top: 25px;
+}
+
+#forth {
+    margin: 40px;
+    width: 1120px;
+    background: #f2f4f5;
+    border: #59778c 2px solid;
+}
+
+.options {
+    margin: 0 25px 0 25px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    color: #0d3959;
+}
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.source {
+    background: white;
+    border: #59778c 1px solid;
+    margin: 25px 25px 0 25px;
+    width: auto;
+}
+
+.source .in {
+    padding: 10px 10px 10px 30px;
+    background: #4693ea;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.inner_wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 10px 20px 10px;
+}
+
+.inner_wrap .right {
+    width: 400px;
+}
+
+.inner_wrap p {
+    color: black;
+    padding-top: 10px;
+}
+
+p.bottom {
+    margin: 0 25px 25px 25px;
+}
+
+.source .in_2 {
+    padding: 10px 10px 10px 10px;
+    background: #4693ea;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.in_2 input {
+    vertical-align: bottom;
+    display: inline-block;
+}
+
+#fifth {
+    margin: 25px 40px 0 40px;
+    width: auto;
+}
+
+#fifth button {
+    width: 1120px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-transform: none;
+}
+
+.result p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #0d3959;
+}
+
+.total {
+    background: url("/about/test/bg.svg") no-repeat;
+    background-position: right;
+    border: #59778c 1px solid;
+    margin-top: 25px;
+    width: auto;
+    padding: 5px 20px 20px 20px;
+}
+
+.total p {
+    font-weight: normal;
+    color: black;
+    padding-top: 15px;
+}
+
+.wr_score {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.total .score {
+    width: 250px;
+    text-align: right;
+    color: white;
+}
+
+
+/* стандарт. индекс */
+
+#forth_2 {
+    margin: 40px;
+    width: 1120px;
+    background: #f2f4f5;
+    border: #59778c 2px solid;
+}
+
+.index {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 435px;
+    margin-left: 670px;
+}
+
+#forth_2 p {
+    padding: 15px;
+}
+
+.sqrt {
+    margin: 15px 0 15px 0;
+    width: 30px;
+    height: 20px;
+    text-align: center;
+    background: #59778c;
+    color: white;
+}
+
+#forth_2 .source {
+    margin: 0 25px 0 25px;
+    padding: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#forth_2 input {
+    width: 150px;
+    background: white;
+    border: #59778c 1px solid;
+}
+
+#forth_2 ::-webkit-input-placeholder {
+    color: black;
+    font-size: 16px;
+}
+
+#forth_2 .long {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#forth_2 span {
+    color: black;
+    font-size: 16px;
+    padding: 15px 0 0 10px;
+}
+
+#forth_2 .source .index {
+    margin: 0;
+    width: 350px;
+}
+
+#forth_2 .source .sqrt {
+    width: 40px;
+    height: 20px;
+    padding: 5px;
+    margin-top: 8px;
+    text-align: center;
+    background: #59778c;
+    color: white;
+}
+
+#forth_2 button {
+    padding: 15px;
+    background: #59778c;
+    color: white;
+    font-size: 14px;
+    text-transform: none;
+    font-weight: 500;
+    margin: 25px;
+    border-radius: 5px;
+    width: 220px;
+}
+
+#forth_2 button:hover {
+    background: #678da8;
+}
+
+.block {
+    margin: 25px 40px 0 40px;
+    width: auto;
+    background: #f2f4f5;
+    border: #59778c 2px solid;
+}
+
+.disabled {
+    color: lightgray
+}
+
+.disabled input {
+    background: #678da8;
+}
+
+.errortext {
+    color: red;
+    padding: 5px;
+}
