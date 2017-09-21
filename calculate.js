@@ -21,6 +21,13 @@ var app = new Vue({
         Ch2_3: false,
         Ch2_4: false,
 
+        Ch3_1: false,
+        Ch3_2: false,
+        Ch3_1_1: false,
+        Ch3_2_1: false,
+
+
+
         data: null, // json с константами для расчета
 
         resultPw: 0, // результат расчета по мощности
@@ -31,14 +38,19 @@ var app = new Vue({
         N: function(N) {
 
             if (N <= 15) {
+                //ниже 15кВт
                 this.resultPw = 500
                 this.resultSt = 500
             } else if (N > 15 < 150 && !this.Conditions) {
+                // от 16 до 150кВт
                 this.Conditions = false
                 this.resultPw = N * this.data.C1.max150
                 this.resultSt = N * this.data.C1.max150
+            } else if (N > 150){
+
             }
 
+            
             if (N == 0) {
                 this.resultPw = 0
                 this.resultSt = 0
@@ -63,12 +75,14 @@ var app = new Vue({
             this.resultSt = Math.round(e * 100) / 100
         }
     },
+    methods:{
+        r: function(e) {
+            console.log(+e+1)
+        }
+    },
     computed: {
         isNValid: function() {
             return (/\d{5}/).test(this.N)
-        },
-        treeCat: function(e) {
-            return e + 1
         }
     },
     mounted: function() {
