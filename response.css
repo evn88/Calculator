@@ -44,6 +44,10 @@
     }
     #forth .left {
         height: auto;
+        margin-top: 10px;
+    }
+    .inner_wrap .right {
+        margin-top: 0;
     }
     #forth .sourse_bottom br {
         display: none;
@@ -233,7 +237,7 @@
     }
     #forth {
         margin: 30px 0 0 0;
-        width: 360px;
+        width: auto;
         border: none;
     }
     .source {
@@ -244,25 +248,33 @@
         padding-bottom: 8px;
     }
     .source .in {
-        background: #4693ea;
+        background: #59778c;
         color: white;
         padding-left: 20px;
     }
     .inner_wrap {
-        margin: 10px 5px 10px 3px;
+        margin: 15px 15px;
     }
     #forth .left {
-        width: 310px;
+        width: auto;
+        margin-top: 0;
     }
     #forth input {
         width: auto;
         height: auto;
     }
+    #forth .left {
+        width: auto;
+        margin-top: 0;
+    }
+    #forth .right {
+        width: auto;
+    }
     .inner_wrap p {
         font-size: 13px;
     }
     .source .in_2 {
-        background: #4693ea;
+        background: #59778c;
         color: white;
         padding-left: 20px;
     }
