@@ -45,7 +45,7 @@
     #forth .left {
         height: auto;
     }
-    #forth .bottom br {
+    #forth .sourse_bottom br {
         display: none;
     }
     #forth_2 {
@@ -216,6 +216,7 @@
     }
     #first .right .safe {
         padding-top: 0;
+        s
     }
     #first .right p span {
         display: none;
@@ -265,7 +266,7 @@
         color: white;
         padding-left: 20px;
     }
-    .bottom {
+    .sourse_bottom {
         margin: 0 15px 25px 15px;
         text-align: center;
     }
@@ -327,10 +328,10 @@
     }
     #fifth {
         margin: 25px 15px 0 15px;
-        width: 360px;
+        width: auto;
     }
     #fifth button {
-        width: 330px;
+        width: auto;
         border-radius: 5px;
         font-size: 14px;
         text-transform: none;
@@ -338,19 +339,29 @@
     #fifth button span {
         display: none;
     }
-    .result {
-        width: 330px;
+    #fifth .result {
+        width: auto;
+        height: auto;
     }
     .total {
-        background-position: 160px;
-        background-size: cover;
+        background: none;
+        padding: 5px 15px 20px 15px;
+        width: auto;
+    }
+    .wr_score {
+        flex-direction: column;
+    }
+    .wr_score p {
+        width: auto;
     }
     .total p {
         font-size: 14px;
     }
     .total .score {
-        color: white;
-        font-weight: 500;
-        padding-top: 53px;
+        color: #277ddd;
+        font-weight: bold;
+        padding-top: 15px;
+        text-align: left;
+        font-size: 16px;
     }
 }
