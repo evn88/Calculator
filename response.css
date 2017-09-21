@@ -1,10 +1,8 @@
 @media screen and (max-width: 1240px) {
-
     .site-body {
         width: 800px;
         margin: 0 auto;
         position: relative;
-
     }
     .inform-page {
         margin-top: 45px;
@@ -13,80 +11,68 @@
         background: #e7eff6;
         padding-bottom: 40px;
     }
-
     #first {
-        height: 310px;
+        height: auto;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         margin: 0 auto;
     }
-
     .left {
         width: 500px;
-        height: 140px;
+        height: auto;
     }
-
+    #first .input_1 {
+        margin-top: 25px;
+    }
     .right {
         width: 500px;
+        margin-top: 25px;
     }
-
     #forth {
         margin: 40px;
         width: 720px;
     }
-
     .options {
         text-align: center;
     }
-
     .inner_wrap {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         margin: 0 10px 20px 10px;
     }
-
     #forth .left {
         height: auto;
     }
-
     #forth .bottom br {
         display: none;
     }
-
     #forth_2 {
         width: 720px;
     }
-
     .index {
         margin-left: 270px;
     }
-
     #forth_2 .source {
         flex-direction: column;
         height: 125px;
         padding-bottom: 22px;
     }
-
     #forth_2 .long {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
     }
-
     #forth_2 span {
         color: black;
         font-size: 16px;
         padding: 15px 0 0 10px;
     }
-
     #forth_2 .source .index {
         width: 102px;
         margin: 2px 0 0 115px;
-
     }
-
     #forth_2 button {
         padding: 15px;
         background: #59778c;
@@ -96,30 +82,23 @@
         font-weight: 500;
         margin: 25px;
         border-radius: 5px;
-
     }
-
     #fifth {
         margin: 25px 40px 0 40px;
         width: 800px;
     }
-
     #fifth button {
         width: 724px;
         border-radius: 5px;
         font-size: 16px;
         text-transform: none;
     }
-
     .result {
         width: 722px;
     }
-
     .total {
         background-position: right 150%;
-
     }
-
     .total .score {
         color: white;
     }
@@ -129,43 +108,33 @@
     .site-body {
         width: auto;
     }
-
     .inform-page {
         width: auto;
     }
-
     #forth {
         width: auto;
     }
-
     #forth_2 {
         width: auto;
     }
-
     .index {
         margin-left: 8px;
     }
-
     #fifth {
         width: auto;
     }
-
     #fifth span {
         display: none;
     }
-
     #fifth button {
         width: 250px;
     }
-
     .result {
         width: auto;
     }
-
     .wr_score p {
         width: 400px;
     }
-
 }
 
 @media screen and (max-width: 820px) {
@@ -189,94 +158,83 @@
     }
 }
 
-
-
 @media screen and (max-width: 600px) {
-
     .site-body {
-        width: 360px;
-    }
-
-    .title-box {
-        font-size: 20px
-    }
-
-    .inform-page {
-        width: 360px;
-    }
-
-    #first {
-        padding: 30px 15px 0 15px;
-        height: 328px;
-        flex-direction: column;
-    }
-
-    #first .left {
-        height: 160px;
         width: auto;
     }
-
+    .title-box {
+        font-size: 20px;
+    }
+    .inform-page {
+        width: auto;
+    }
+    .wrapper #calculate {
+        padding: 0;
+    }
+    #first {
+        padding: 0 15px 0 15px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    #first .left {
+        height: auto;
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
     select {
-        font-size: 14px;
+        font-size: 15px;
     }
-
-    .left .input_1 label{
-        font-size: 14px;
+    .left .input_1 label {
+        font-size: 15px;
     }
-
     .left .input {
         color: black;
         font-size: 14px;
         width: 298px;
         padding: 10px 15px 10px 15px;
     }
-
     .left input {
         padding: 0;
         width: 80px;
         height: 35px;
         text-align: center;
     }
-
     #first .right {
-        width: 328px;
-        height: 144px;
+        width: auto;
+        height: auto;
     }
-
     #first .right p {
-        font-size: 14px;
-
+        font-size: 15px;
+        padding-top: 15px;
     }
-
     #first .right input {
         vertical-align: center;
     }
-
+    #first .right .safe {
+        padding-top: 0;
+    }
     #first .right p span {
         display: none;
     }
-
     #second {
         padding: 0 20px 25px 15px;
     }
-
     #second li {
         font-size: 13px;
     }
-
     #third {
         padding: 0 15px 0 15px;
         margin-bottom: 25px;
-
     }
-
     #forth {
         margin: 30px 0 0 0;
         width: 360px;
         border: none;
-
     }
-
     .source {
         background: white;
         border: #59778c 1px solid;
@@ -284,42 +242,33 @@
         width: auto;
         padding-bottom: 8px;
     }
-
     .source .in {
         background: #4693ea;
         color: white;
         padding-left: 20px;
     }
-
     .inner_wrap {
         margin: 10px 5px 10px 3px;
     }
-
     #forth .left {
         width: 310px;
-
     }
-
     #forth input {
         width: auto;
         height: auto;
     }
-
     .inner_wrap p {
         font-size: 13px;
     }
-
     .source .in_2 {
         background: #4693ea;
         color: white;
         padding-left: 20px;
     }
-
     .bottom {
         margin: 0 15px 25px 15px;
         text-align: center;
     }
-
     #forth_2 {
         width: 360px;
         margin: 0 0 30px 0;
@@ -327,22 +276,17 @@
         border-right: none;
         background: white;
     }
-
     .index {
         margin-left: 0;
         width: 360px;
     }
-
     .index .sqrt {
         margin: 33px 0 0 0;
     }
-
     .index .quart {
         height: 18px;
         margin-top: 18px;
     }
-
-
     #forth_2 .source {
         flex-direction: column;
         height: 125px;
@@ -350,32 +294,26 @@
         margin: 0;
         border: none;
     }
-
     #forth_2 select {
         font-size: 13px;
     }
-
     #forth_2 .long {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
     }
-
     #forth_2 input {
         width: 100px;
     }
-
     #forth_2 ::-webkit-input-placeholder {
         color: black;
         font-size: 14px;
         text-align: center;
     }
-
     #forth_2 .source .index {
         width: 102px;
         margin: 2px 0 0 95px;
     }
-
     #forth_2 button {
         padding: 15px;
         background: #59778c;
@@ -387,41 +325,32 @@
         border-radius: 5px;
         width: 330px;
     }
-
     #fifth {
         margin: 25px 15px 0 15px;
         width: 360px;
     }
-
     #fifth button {
         width: 330px;
         border-radius: 5px;
         font-size: 14px;
         text-transform: none;
     }
-
     #fifth button span {
         display: none;
     }
-
     .result {
         width: 330px;
     }
-
     .total {
         background-position: 160px;
         background-size: cover;
     }
-
     .total p {
         font-size: 14px;
     }
-
     .total .score {
         color: white;
         font-weight: 500;
         padding-top: 53px;
     }
-
-
 }
