@@ -21,7 +21,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                 </div>
                 <div class="input_1">
                     <label>Заявляемая мощность
-                    <input type="number" id="N" min="0" max="100000" v-model="N" :disabled="S1==0 || Category==0" required>
+                    <input type="number" id="N" min="0" max="99999" v-model="N" :disabled="S1==0 || Category==0" required>
                     кВт</label>
                     <br>
                     <p class="errortext" v-show="N && isNValid">Вы ввели максимально допустимое количество символов</p>
@@ -40,7 +40,12 @@ $APPLICATION->SetTitle("Калькулятор технологического 
         <!-- при условиях -->
         <div id="second">
             <div class="check" v-show="N<=15 && S1 == 1 && S1!==0 && Category!==0">
-                <p><label><input type="checkbox" id="" value="check" v-model="Conditions"><span class="jq-checkbox"  :class="{ checked: Conditions }"></span> При условиях:</label></p>
+                <p>
+                    <label>
+                        <input type="checkbox" id="" value="check" v-model="Conditions">
+                        <span class="jq-checkbox"  :class="{ checked: Conditions }"></span> При условиях:
+                    </label>
+                </p>
                 <ul>
                     <li> если в границах муниципальных районов, городских округов и на внутригородских территориях городов федерального значения одно и то же лицо может осуществить технологическое присоединение энергопринимающих устройств, принадлежащих ему на праве собственности или на ином законном основании, с платой за технологическое присоединение в размере, не превышающем 550 рублей, не более одного раза в течение 3 лет.</li>
                     <li> при технологическом присоединении энергопринимающих устройств, принадлежащих лицам, владеющим земельным участком по договору аренды, заключенному на срок не более одного года, на котором расположены присоединяемые энергопринимающие устройства;</li>
@@ -86,10 +91,10 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                             <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch2_4" v-model="Ch2_4"><span class="jq-checkbox" :class="{ checked: Ch2_4 }"></span> Воздушная линия изолированная 6-10кВ</label></p>
                         </div>
                         <div class="right">
-                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="C3_1" v-model="Ch3_1"> Кабельная линия 0,4кВ</label></p>
-                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="C3_2" v-model="Ch3_2"> Кабельная линия 6-10кВ</label></p>
-                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="C3_1_1" v-model="Ch3_1_1"> Кабельная линия 0,4кВ с приминением ГНБ*</label></p>
-                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="C3_2_1" v-model="Ch3_2_1"> Кабельная линия 6(10)кВ с приминением ГНБ*</label></p>
+                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch3_1" v-model="Ch3_1"> Кабельная линия 0,4кВ</label></p>
+                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch3_2" v-model="Ch3_2"> Кабельная линия 6-10кВ</label></p>
+                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch3_1_1" v-model="Ch3_1_1"> Кабельная линия 0,4кВ с приминением ГНБ*</label></p>
+                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch3_2_1" v-model="Ch3_2_1"> Кабельная линия 6(10)кВ с приминением ГНБ*</label></p>
                         </div>
                     </div>
                 </div>
@@ -97,16 +102,16 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                     <p class="in">Строительство линий по второму источнику питания</p>
                     <div class="inner_wrap">
                         <div class="left">
-                            <p><label><input type="checkbox" name="b"> Воздушная линия 0,4кВ</label></p>
-                            <p><label><input type="checkbox" name="b"> Воздушная линия изолированная 0,4кВ</label></p>
-                            <p><label><input type="checkbox" name="b"> Воздушная линия 6-10кВ</label></p>
-                            <p><label><input type="checkbox" name="b"> Воздушная линия изолированная 6-10кВ</label></p>
+                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch2_1" v-model="Ch2_1"><span class="jq-checkbox" :class="{ checked: Ch2_1 }"></span> Воздушная линия 0,4кВ</label></p>
+                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch2_2" v-model="Ch2_2"><span class="jq-checkbox" :class="{ checked: Ch2_2 }"></span> Воздушная линия изолированная 0,4кВ</label></p>
+                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch2_3" v-model="Ch2_3"><span class="jq-checkbox" :class="{ checked: Ch2_3 }"></span> Воздушная линия 6-10кВ</label></p>
+                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch2_4" v-model="Ch2_4"><span class="jq-checkbox" :class="{ checked: Ch2_4 }"></span> Воздушная линия изолированная 6-10кВ</label></p>
                         </div>
                         <div class="right">
-                            <p><label><input type="checkbox" name="b"> Кабельная линия 0,4кВ</label></p>
-                            <p><label><input type="checkbox" name="b"> Кабельная линия 6-10кВ</label></p>
-                            <p><label><input type="checkbox" name="b"> Кабельная линия 0,4кВ с приминением ГНБ*</label></p>
-                            <p><label><input type="checkbox" name="b"> Кабельная линия 6(10)кВ с приминением ГНБ*</label></p>
+                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch3_1" v-model="Ch3_1"> Кабельная линия 0,4кВ</label></p>
+                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch3_2" v-model="Ch3_2"> Кабельная линия 6-10кВ</label></p>
+                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch3_1_1" v-model="Ch3_1_1"> Кабельная линия 0,4кВ с приминением ГНБ*</label></p>
+                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch3_2_1" v-model="Ch3_2_1"> Кабельная линия 6(10)кВ с приминением ГНБ*</label></p>
                         </div>
                     </div>
                 </div>
@@ -119,22 +124,22 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                     </p>
                     <div class="inner_wrap">
                         <div class="left">
-                            <p><label><input type="radio" name="BuildTP" value="3" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 25 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="3" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 40 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="3" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 63 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="3" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 100 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="3" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 160 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="3" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 250 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="3" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 400 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP" value="C4_1" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 25 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP" value="C4_2" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 40 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP" value="C4_3" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 63 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP" value="C4_4" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 100 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP" value="C4_5" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 160 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP" value="C4_6" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 250 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP" value="C4_7" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 400 кВА</label></p>
                         </div>
                         <div class="right">
-                            <p><label><input type="radio" name="BuildTP" value="3" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 630 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="3" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x160 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="3" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x250 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="3" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x400 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="3" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x630 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="3" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x1000 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="3" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x1250 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP" value="C4_8" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 630 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP" value="C4_9" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x160 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP" value="C4_10" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x250 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP" value="C4_11" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x400 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP" value="C4_12" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x630 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP" value="C4_13" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x1000 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP" value="C4_14" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x1250 кВА</label></p>
                         </div>
                     </div>
                 </div>
@@ -186,27 +191,27 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                 <p class="in_2 check">
                     <label>
                         <input type="checkbox" value="check" v-model="BuildTP">
-                        <span class="jq-checkbox" :class="{ checked: BuildTP }"></span> Строительство ТП
+                        <span class="jq-checkbox" :class="{ checked: BuildTP }"></span> Строительство ТП {{BuildTP_radio}}
                     </label>
                 </p>
                 <div class="inner_wrap">
                     <div class="left">
-                        <p><label><input type="radio" name="BuildTP" value="25" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 25 кВА</label></p>
-                        <p><label><input type="radio" name="BuildTP" value="40" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 40 кВА</label></p>
-                        <p><label><input type="radio" name="BuildTP" value="63" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 63 кВА</label></p>
-                        <p><label><input type="radio" name="BuildTP" value="100" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 100 кВА</label></p>
-                        <p><label><input type="radio" name="BuildTP" value="160" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 160 кВА</label></p>
-                        <p><label><input type="radio" name="BuildTP" value="250" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 250 кВА</label></p>
-                        <p><label><input type="radio" name="BuildTP" value="400" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 400 кВА</label></p>
+                        <p><label><input type="radio" name="BuildTP_radio" value="25"  :disabled="!BuildTP"> Строительство ТП-6(10) кВ 25 кВА</label></p>
+                        <p><label><input type="radio" name="BuildTP_radio" value="40"  :disabled="!BuildTP"> Строительство ТП-6(10) кВ 40 кВА</label></p>
+                        <p><label><input type="radio" name="BuildTP_radio" value="63"  :disabled="!BuildTP"> Строительство ТП-6(10) кВ 63 кВА</label></p>
+                        <p><label><input type="radio" name="BuildTP_radio" value="100" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 100 кВА</label></p>
+                        <p><label><input type="radio" name="BuildTP_radio" value="160" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 160 кВА</label></p>
+                        <p><label><input type="radio" name="BuildTP_radio" value="250" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 250 кВА</label></p>
+                        <p><label><input type="radio" name="BuildTP_radio" value="400" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 400 кВА</label></p>
                     </div>
                     <div class="right">
-                        <p><label><input type="radio" name="BuildTP" value="630" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 630 кВА</label></p>
-                        <p><label><input type="radio" name="BuildTP" value="2160" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x160 кВА</label></p>
-                        <p><label><input type="radio" name="BuildTP" value="2250" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x250 кВА</label></p>
-                        <p><label><input type="radio" name="BuildTP" value="2400" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x400 кВА</label></p>
-                        <p><label><input type="radio" name="BuildTP" value="2630" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x630 кВА</label></p>
-                        <p><label><input type="radio" name="BuildTP" value="21000" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x1000 кВА</label></p>
-                        <p><label><input type="radio" name="BuildTP" value="21250" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x1250 кВА</label></p>
+                        <p><label><input type="radio" name="BuildTP_radio" value="630"   :disabled="!BuildTP"> Строительство ТП-6(10) кВ 630 кВА</label></p>
+                        <p><label><input type="radio" name="BuildTP_radio" value="2160"  :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x160 кВА</label></p>
+                        <p><label><input type="radio" name="BuildTP_radio" value="2250"  :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x250 кВА</label></p>
+                        <p><label><input type="radio" name="BuildTP_radio" value="2400"  :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x400 кВА</label></p>
+                        <p><label><input type="radio" name="BuildTP_radio" value="2630"  :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x630 кВА</label></p>
+                        <p><label><input type="radio" name="BuildTP_radio" value="21000" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x1000 кВА</label></p>
+                        <p><label><input type="radio" name="BuildTP_radio" value="21250" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x1250 кВА</label></p>
                     </div>
                 </div>
             </div>

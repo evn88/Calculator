@@ -12,6 +12,7 @@ var app = new Vue({
         Conditions: false, //признак условия
         Build: false, //необходимо строительство
         BuildTP: false,
+        BuildTP_radio: 0,
         Calculate: 0, //расчет по power-мощности, standart-стандартизированной
         VoltageClass: 0, //Класс напряжения
         L: 0, //длина линий
@@ -46,11 +47,11 @@ var app = new Vue({
                 this.Conditions = false
                 this.resultPw = N * this.data.C1.max150
                 this.resultSt = N * this.data.C1.max150
-            } else if (N > 150){
+            } else if (N > 150) {
 
             }
 
-            
+
             if (N == 0) {
                 this.resultPw = 0
                 this.resultSt = 0
@@ -75,9 +76,9 @@ var app = new Vue({
             this.resultSt = Math.round(e * 100) / 100
         }
     },
-    methods:{
+    methods: {
         r: function(e) {
-            console.log(+e+1)
+            console.log(+e + 1)
         }
     },
     computed: {
@@ -95,6 +96,11 @@ var app = new Vue({
 
             $('.Category').change(function(n) {
                 self.Category = n.target.value
+                    //console.log(n.target.value)
+            })
+
+            $('input[name=BuildTP_radio]').change(function(n) {
+                self.BuildTP_radio = n.target.value
                     //console.log(n.target.value)
             })
         })
