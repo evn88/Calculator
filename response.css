@@ -49,11 +49,11 @@
     .inner_wrap .right {
         margin-top: 0;
     }
-    #forth .sourse_bottom br {
+    .sourse_bottom br {
         display: none;
     }
     #forth_2 {
-        width: 720px;
+        width: auto;
     }
     .index {
         margin-left: 270px;
@@ -86,6 +86,9 @@
         font-weight: 500;
         margin: 25px;
         border-radius: 5px;
+    }
+    .block .source {
+        margin-bottom: 25px;
     }
     #fifth {
         margin: 25px 40px 0 40px;
@@ -283,7 +286,7 @@
         text-align: center;
     }
     #forth_2 {
-        width: 360px;
+        width: auto;
         margin: 0 0 30px 0;
         border-left: none;
         border-right: none;
@@ -291,7 +294,7 @@
     }
     .index {
         margin-left: 0;
-        width: 360px;
+        width: auto;
     }
     .index .sqrt {
         margin: 33px 0 0 0;
@@ -301,19 +304,19 @@
         margin-top: 18px;
     }
     #forth_2 .source {
-        flex-direction: column;
+        width: auto flex-direction: column;
         height: 125px;
         padding: 15px;
         margin: 0;
         border: none;
     }
     #forth_2 select {
-        font-size: 13px;
+        font-size: 11px;
     }
     #forth_2 .long {
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: space-between;
     }
     #forth_2 input {
         width: 100px;
@@ -323,9 +326,14 @@
         font-size: 14px;
         text-align: center;
     }
+    #forth_2 .left_text {
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+    }
     #forth_2 .source .index {
         width: 102px;
-        margin: 2px 0 0 95px;
+        margin: 2px;
     }
     #forth_2 button {
         padding: 15px;
@@ -336,7 +344,23 @@
         font-weight: 500;
         margin: 0 15px 25px 15px;
         border-radius: 5px;
-        width: 330px;
+        width: 270px;
+        text-align: center;
+    }
+    .block {
+        width: auto;
+        margin: 0 auto;
+        background: none;
+        border: none;
+    }
+    .block .inner_wrap p {
+        font-size: 13px;
+    }
+    .block .left {
+        width: auto;
+    }
+    .block .right {
+        width: auto;
     }
     #fifth {
         margin: 25px 15px 0 15px;

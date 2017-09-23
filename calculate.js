@@ -7,13 +7,13 @@ var app = new Vue({
     data: {
         title: 'КАЛЬКУЛЯТОР ТЕХНОЛОГИЧЕСКОГО ПРИСОЕДИНЕНИЯ',
         S1: 0, //вид заявки (1 - постоянное, 2 - временное)
-        Category: 0,
-        N: 0, //заявленная мощность
-        Conditions: false, //признак условия
-        Build: false, //необходимо строительство
+        Category: 3,
+        N: 16, //заявленная мощность
+        Conditions: true, //признак условия
+        Build: true, //необходимо строительство
         BuildTP: false,
         BuildTP_radio: 0,
-        Calculate: 0, //расчет по power-мощности, standart-стандартизированной
+        Calculate: 2, //расчет по power-мощности, standart-стандартизированной
         VoltageClass: 0, //Класс напряжения
         L: 0, //длина линий
 
@@ -40,8 +40,13 @@ var app = new Vue({
 
             if (N <= 15) {
                 //ниже 15кВт
-                this.resultPw = 500
-                this.resultSt = 500
+                if (this.Build) {
+                    this.resultPw = this.buildPower()
+                } else {
+                    this.resultPw = 500
+                    this.resultSt = 500
+                }
+
             } else if (N > 15 < 150 && !this.Conditions) {
                 // от 16 до 150кВт
                 this.Conditions = false
@@ -79,6 +84,15 @@ var app = new Vue({
     methods: {
         r: function(e) {
             console.log(+e + 1)
+        },
+        buildPower: function() {
+            var arr = [];
+            (this.Ch2_1) ? arr[0] = +this.data.Power.min150.Cm2_1: arr[0] = 0
+
+            return +this.N * Number(this.data.C1.max15) + (+this.N + arr[0])
+        },
+        buildStandart: function() {
+
         }
     },
     computed: {

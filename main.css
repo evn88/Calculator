@@ -223,6 +223,7 @@ span .jd-radio {
 
 p.sourse_bottom {
     margin: 0 25px 25px 25px;
+    text-align: justify;
 }
 
 .source .in_2 {
@@ -288,7 +289,7 @@ p.sourse_bottom {
 
 #forth_2 {
     margin: 40px;
-    width: 1120px;
+    width: auto;
     background: #f2f4f5;
     border: #59778c 2px solid;
 }
@@ -381,6 +382,10 @@ p.sourse_bottom {
     width: auto;
     background: #f2f4f5;
     border: #59778c 2px solid;
+}
+
+.block .source {
+    margin-bottom: 25px;
 }
 
 .disabled {

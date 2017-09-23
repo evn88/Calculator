@@ -171,7 +171,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                     </select>
                 </div>
                 <div class="long">
-                    <input type="text" placeholder="длина"> <span>км</span>
+                    <div class=""><input type="text" placeholder="длина"> <span>км</span></div>
                     <div class="index">
                         <p>Индекс</p>
                         <div class="sqrt">4.95</div>
@@ -215,7 +215,6 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                     </div>
                 </div>
             </div>
-            <p></p>
         </div>
         <!-- Расчет -->
         <div id="fifth">
