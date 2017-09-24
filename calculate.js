@@ -41,27 +41,6 @@ var app = new Vue({
     },
     watch: {
         N: function(N) {
-            /*
-                        if (N <= 15) {
-                            //console.log(Number(this.j.C1.max150))
-                            //ниже 15кВт
-                            if (this.Build) {
-                                // this.resultPw = this.buildPower()
-
-                            } else {
-                                //this.resultPw = 500
-                                //this.resultSt = 500
-                            }
-
-                        } else if (N > 15 < 150 && !this.Conditions) {
-                            // от 16 до 150кВт
-                            this.Conditions = false
-                                //this.resultPw = N * this.data.C1.max150
-                                //this.resultSt = N * this.data.C1.max150
-                        } else if (N > 150) {
-
-                        }
-            */
 
             if (N == 0) {
                 this.resultPw = 0
@@ -118,24 +97,37 @@ var app = new Vue({
             this.Ch2__3_2_1 = false
         },
         round: function(e) {
-            //округляем результаты
-            return Math.round(e * 100) / 100
+            return Math.round(e * 100) / 100 //округляем результаты
+        },
+        min15: function() {
+
         }
     },
     computed: {
         resultPw: function() {
-            if (this.j) {
+            if (this.j && this.N !== 0) {
                 var arr = [];
+                for (var i = 0; i <= 1; i++) {
+                    console.log(this.j.Power.max150.Cm2[i])
+                }
                 if (this.Ch2_1) { arr[0] = Number(this.j.Power.min150.Cm2_1) } else { arr[0] = 0 }
                 if (this.Ch2_2) { arr[1] = Number(this.j.Power.min150.Cm2_2) } else { arr[1] = 0 }
+                if (this.Ch3_1) { arr[2] = Number(this.j.Power.min150.Cm3_1) } else { arr[2] = 0 }
+
+
+                //формула для расчета по мощности 2й категории без ТП
+                //C1 * N +  ∑ (C2,i * N) +  ∑ (C3,i * N) +  ∑ (C2,i N) + ( ∑ (C3,i * N) 
 
                 return this.round(Number(this.N) * Number(this.j.C1.max15) + (Number(this.N) + arr[0]) + (Number(this.N) + arr[1]))
+            } else {
+                return 0
             }
         },
         resultSt: function() {
-            if (this.j) {
-
+            if (this.j && this.N !== 0) {
                 return 500
+            } else {
+                return 0
             }
         },
         isNValid: function() {

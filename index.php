@@ -31,8 +31,16 @@ $APPLICATION->SetTitle("Калькулятор технологического 
             <div class="right">
                 <div class="input">
                     <p class="safe"> Категория надежности </p>
-                    <p><label><input class="Category" type="radio" name="Category" value="3" v-model="Category" > 3 – <span>Питание</span> от одного <span>независимого</span> источника</label></p>
-                    <p><label v-show="S1!=2"><input class="Category" type="radio" name="Category" value="2" v-model="Category" :disabled="S1 == 2"> 2 – <span>Питание</span> от двух <span>независимых</span> источников</label></p>
+                    <p>
+                        <label>
+                            <input class="Category" type="radio" name="Category" value="3" v-model="Category" checked> 3 – <span>Питание</span> от одного <span>независимого</span> источника
+                        </label>
+                    </p>
+                    <p>
+                        <label v-show="S1!=2">
+                            <input class="Category" type="radio" name="Category" value="2" v-model="Category" :disabled="S1 == 2"> 2 – <span>Питание</span> от двух <span>независимых</span> источников
+                        </label>
+                    </p>
                 </div>
             </div>
         </div>
@@ -224,9 +232,6 @@ $APPLICATION->SetTitle("Калькулятор технологического 
         </div>
         <!-- Расчет -->
         <div id="fifth">
-            <div class="button">
-                    <a href="#">Рассчитать стоимость <span>технологического присоединения</span></a>
-            </div>
             <div class="result">
                 <p>Результаты:</p>
                 <div class="total">
