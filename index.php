@@ -21,7 +21,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                 </div>
                 <div class="input_1">
                     <label>Заявляемая мощность
-                    <input type="number" id="N" min="0" max="99999" v-model="N" :disabled="S1==0 || Category==0" required>
+                    <input type="number" id="N" min="0" max="99999" v-model.number="N" :disabled="S1==0 || Category==0" required>
                     кВт</label>
                     <br>
                     <p class="errortext" v-show="N && isNValid">Вы ввели максимально допустимое количество символов</p>
@@ -39,10 +39,10 @@ $APPLICATION->SetTitle("Калькулятор технологического 
 
         <!-- при условиях -->
         <div id="second">
-            <div class="check" v-show="N<=15 && S1 == 1 && S1!==0 && Category!==0">
+            <div class="check" v-if="N<=15 && S1 == 1 && S1!==0 && Category!==0">
                 <p>
                     <label>
-                        <input type="checkbox" id="" value="check" v-model="Conditions">
+                        <input type="checkbox" value="check" v-model.lazy="Conditions" key="Conditions-checkbox">
                         <span class="jq-checkbox"  :class="{ checked: Conditions }"></span> При условиях:
                     </label>
                 </p>
@@ -57,18 +57,24 @@ $APPLICATION->SetTitle("Калькулятор технологического 
         <!-- класс напряжения / строительство / расчет по -->
         <div id="third">
             <div id="build" v-show="Conditions || S1 == 1 && N>15">
+                <div class="check">
+                    <p>
+                        <label>
+                            <input type="checkbox" value="check" v-model.lazy="Build" class="no_styled">
+                            <span class="jq-checkbox" :class="{ checked: Build }"></span> Необходимо строительство
+                        </label>
+                    </p>
+                </div>
+                <br>
                 <div class="select">
-                    <select size="1" v-model="VoltageClass" class="no_styled">
+                    <select size="1" v-model.lazy="VoltageClass" class="no_styled">
                         <option value="0" disabled selected> Класс напряжения </option>
                         <option value="1">0,4 кВ</option>
                         <option value="2">6 (10) кВ</option>
                     </select>
                 </div>
-                <div class="check">
-                    <p><label><input type="checkbox" value="check" v-model="Build" class="no_styled"><span class="jq-checkbox" :class="{ checked: Build }"></span> Необходимо строительство</label></p>
-                </div>
                 <div class="calc">
-                    <select size="1" v-model="Calculate" class="no_styled">
+                    <select size="1" v-model.lazy="Calculate" class="no_styled">
                         <option value="0" disabled selected> Расчет по: </option>
                         <option value="1">Мощности</option>
                         <option value="2">Стандартизированной ставке</option>
@@ -78,23 +84,23 @@ $APPLICATION->SetTitle("Калькулятор технологического 
         </div>
 
         <!-- по мощности -->
-        <div id="forth" v-show="Conditions && Build && Calculate == 1 || S1 == 1 && N>15 && Calculate == 1">
+        <div id="forth" v-show="Conditions && VoltageClass !==0 && Build && Calculate == 1 || S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 1">
             <p class="options">Параметры для расчета стоимости по ставке за максимальную мощность</p>
             <div class="wrap">
                 <div class="source">
                     <p class="in">Строительство линий по первому источнику питания</p>
                     <div class="inner_wrap">
                         <div class="left">
-                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch2_1" v-model="Ch2_1"><span class="jq-checkbox" :class="{ checked: Ch2_1 }"></span> Воздушная линия 0,4кВ</label></p>
-                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch2_2" v-model="Ch2_2"><span class="jq-checkbox" :class="{ checked: Ch2_2 }"></span> Воздушная линия изолированная 0,4кВ</label></p>
-                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch2_3" v-model="Ch2_3"><span class="jq-checkbox" :class="{ checked: Ch2_3 }"></span> Воздушная линия 6-10кВ</label></p>
-                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch2_4" v-model="Ch2_4"><span class="jq-checkbox" :class="{ checked: Ch2_4 }"></span> Воздушная линия изолированная 6-10кВ</label></p>
+                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch2_1" v-model.lazy="Ch2_1"><span class="jq-checkbox" :class="{ checked: Ch2_1 }"></span> Воздушная линия 0,4кВ</label></p>
+                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch2_2" v-model.lazy="Ch2_2"><span class="jq-checkbox" :class="{ checked: Ch2_2 }"></span> Воздушная линия изолированная 0,4кВ</label></p>
+                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch2_3" v-model.lazy="Ch2_3"><span class="jq-checkbox" :class="{ checked: Ch2_3 }"></span> Воздушная линия 6-10кВ</label></p>
+                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch2_4" v-model.lazy="Ch2_4"><span class="jq-checkbox" :class="{ checked: Ch2_4 }"></span> Воздушная линия изолированная 6-10кВ</label></p>
                         </div>
                         <div class="right">
-                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch3_1" v-model="Ch3_1"> Кабельная линия 0,4кВ</label></p>
-                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch3_2" v-model="Ch3_2"> Кабельная линия 6-10кВ</label></p>
-                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch3_1_1" v-model="Ch3_1_1"> Кабельная линия 0,4кВ с приминением ГНБ*</label></p>
-                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch3_2_1" v-model="Ch3_2_1"> Кабельная линия 6(10)кВ с приминением ГНБ*</label></p>
+                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch3_1" v-model.lazy="Ch3_1"><span class="jq-checkbox" :class="{ checked: Ch3_1 }"></span> Кабельная линия 0,4кВ</label></p>
+                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch3_2" v-model.lazy="Ch3_2"><span class="jq-checkbox" :class="{ checked: Ch3_2 }"></span> Кабельная линия 6-10кВ</label></p>
+                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch3_1_1" v-model.lazy="Ch3_1_1"><span class="jq-checkbox" :class="{ checked: Ch3_1_1 }"></span> Кабельная линия 0,4кВ с приминением ГНБ*</label></p>
+                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch3_2_1" v-model.lazy="Ch3_2_1"><span class="jq-checkbox" :class="{ checked: Ch3_2_1 }"></span> Кабельная линия 6(10)кВ с приминением ГНБ*</label></p>
                         </div>
                     </div>
                 </div>
@@ -102,16 +108,16 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                     <p class="in">Строительство линий по второму источнику питания</p>
                     <div class="inner_wrap">
                         <div class="left">
-                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch2_1" v-model="Ch2_1"><span class="jq-checkbox" :class="{ checked: Ch2_1 }"></span> Воздушная линия 0,4кВ</label></p>
-                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch2_2" v-model="Ch2_2"><span class="jq-checkbox" :class="{ checked: Ch2_2 }"></span> Воздушная линия изолированная 0,4кВ</label></p>
-                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch2_3" v-model="Ch2_3"><span class="jq-checkbox" :class="{ checked: Ch2_3 }"></span> Воздушная линия 6-10кВ</label></p>
-                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch2_4" v-model="Ch2_4"><span class="jq-checkbox" :class="{ checked: Ch2_4 }"></span> Воздушная линия изолированная 6-10кВ</label></p>
+                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch2__2_1" v-model="Ch2__2_1"><span class="jq-checkbox" :class="{ checked: Ch2__2_1 }"></span> Воздушная линия 0,4кВ</label></p>
+                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch2__2_2" v-model="Ch2__2_2"><span class="jq-checkbox" :class="{ checked: Ch2__2_2 }"></span> Воздушная линия изолированная 0,4кВ</label></p>
+                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch2__2_3" v-model="Ch2__2_3"><span class="jq-checkbox" :class="{ checked: Ch2__2_3 }"></span> Воздушная линия 6-10кВ</label></p>
+                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch2__2_4" v-model="Ch2__2_4"><span class="jq-checkbox" :class="{ checked: Ch2__2_4 }"></span> Воздушная линия изолированная 6-10кВ</label></p>
                         </div>
                         <div class="right">
-                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch3_1" v-model="Ch3_1"> Кабельная линия 0,4кВ</label></p>
-                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch3_2" v-model="Ch3_2"> Кабельная линия 6-10кВ</label></p>
-                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch3_1_1" v-model="Ch3_1_1"> Кабельная линия 0,4кВ с приминением ГНБ*</label></p>
-                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch3_2_1" v-model="Ch3_2_1"> Кабельная линия 6(10)кВ с приминением ГНБ*</label></p>
+                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch2__3_1" v-model="Ch2__3_1"><span class="jq-checkbox" :class="{ checked: Ch2__3_1 }"></span> Кабельная линия 0,4кВ</label></p>
+                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch2__3_2" v-model="Ch2__3_2"><span class="jq-checkbox" :class="{ checked: Ch2__3_2 }"></span> Кабельная линия 6-10кВ</label></p>
+                            <p v-show="VoltageClass == 1"><label><input type="checkbox" name="Ch2__3_1_1" v-model="Ch2__3_1_1"><span class="jq-checkbox" :class="{ checked: Ch2__3_1_1 }"></span> Кабельная линия 0,4кВ с приминением ГНБ*</label></p>
+                            <p v-show="VoltageClass == 2"><label><input type="checkbox" name="Ch2__3_2_1" v-model="Ch2__3_2_1"><span class="jq-checkbox" :class="{ checked: Ch2__3_2_1 }"></span> Кабельная линия 6(10)кВ с приминением ГНБ*</label></p>
                         </div>
                     </div>
                 </div>
@@ -150,7 +156,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
         </div>
 
         <!-- по стандартизированной ставке -->
-        <div id="forth_2" v-show="Conditions && Build && Calculate == 2 || S1 == 1 && N>15 && Calculate == 2">
+        <div id="forth_2" v-show="Conditions && VoltageClass !==0 && Build && Calculate == 2 || S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 2">
                 <p class="options">Параметры для расчета стоимости по стандартизированной ставке</p>
             <div class="index">
                 <p>Индекс изменения сметной стоимости за:</p>
@@ -186,7 +192,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                     комплексов.</p>
         </div>
 
-        <div class="block" v-show="Conditions && Build && Calculate == 2 || S1 == 1 && N>15 && Calculate == 2">
+        <div class="block" v-show="Conditions && VoltageClass !==0  && Build && Calculate == 2 || S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 2">
             <div class="source">
                 <p class="in_2 check">
                     <label>
@@ -219,7 +225,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
         <!-- Расчет -->
         <div id="fifth">
             <div class="button">
-                   <!-- <button>Рассчитать стоимость <span>технологического присоединения</span></button> -->
+                    <a href="#">Рассчитать стоимость <span>технологического присоединения</span></a>
             </div>
             <div class="result">
                 <p>Результаты:</p>
