@@ -192,7 +192,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                     </div>
                 </div>
             </div>
-            <div class="btn"><a href="#">Добавить линию</a></div>
+
             <div class="source">
                 <div class="select">
                     <select class="no_styled">
@@ -214,7 +214,8 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                     </div>
                 </div>
             </div>
-
+            
+            <div class="btn"><a href="#">Добавить линию</a></div>
 
             <p class="sourse_bottom"><b>*ГНБ -</b> Горизонтальное бурение или Горизонтальное направленное бурение — управляемый бестраншейный <br>
                     метод прокладывания подземных коммуникаций, основанный на использовании специальных буровых <br>
