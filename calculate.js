@@ -108,17 +108,54 @@ var app = new Vue({
             if (this.j && this.N !== 0) {
                 var arr = [];
                 for (var i = 0; i <= 1; i++) {
-                    console.log(this.j.Power.max150.Cm2[i])
+                    //console.log(this.j.Power.max150.Cm2[i])
                 }
-                if (this.Ch2_1) { arr[0] = Number(this.j.Power.min150.Cm2_1) } else { arr[0] = 0 }
-                if (this.Ch2_2) { arr[1] = Number(this.j.Power.min150.Cm2_2) } else { arr[1] = 0 }
-                if (this.Ch3_1) { arr[2] = Number(this.j.Power.min150.Cm3_1) } else { arr[2] = 0 }
-
 
                 //формула для расчета по мощности 2й категории без ТП
-                //C1 * N +  ∑ (C2,i * N) +  ∑ (C3,i * N) +  ∑ (C2,i N) + ( ∑ (C3,i * N) 
+                //C1 * N +  ∑ (C2,i * N) +  ∑ (C3,i * N) +  ∑ (C2,i N) + ( ∑ (C3,i * N)  + строительство ТП  ∑ (C4,i * N) 
+                var x = 0
+                x = Number(this.N) * Number(this.j.C1.max15)
 
-                return this.round(Number(this.N) * Number(this.j.C1.max15) + (Number(this.N) + arr[0]) + (Number(this.N) + arr[1]))
+                //первый источник
+                if (this.Ch2_1) { x += (Number(this.j.Power.max150.Cm2_1) * Number(this.N)) }
+                if (this.Ch2_2) { x += (Number(this.j.Power.max150.Cm2_2) * Number(this.N)) }
+
+                if (this.Ch3_1) { x += (Number(this.j.Power.max150.Cm3_1) * Number(this.N)) }
+                if (this.Ch3_2) { x += (Number(this.j.Power.max150.Cm3_2) * Number(this.N)) }
+                if (this.Ch3_1_1) { x += (Number(this.j.Power.max150.Cm3_1_1) * Number(this.N)) }
+                if (this.Ch3_2_1) { x += (Number(this.j.Power.max150.Cm3_2_1) * Number(this.N)) }
+
+                //второй источник
+                if (this.Ch2__2_1) { x += (Number(this.j.Power.max150.Cm2_1) * Number(this.N)) }
+                if (this.Ch2__2_2) { x += (Number(this.j.Power.max150.Cm2_2) * Number(this.N)) }
+
+                if (this.Ch2__3_1) { x += (Number(this.j.Power.max150.Cm3_1) * Number(this.N)) }
+                if (this.Ch2__3_2) { x += (Number(this.j.Power.max150.Cm3_2) * Number(this.N)) }
+                if (this.Ch2__3_1_1) { x += (Number(this.j.Power.max150.Cm3_1_1) * Number(this.N)) }
+                if (this.Ch2__3_2_1) { x += (Number(this.j.Power.max150.Cm3_2_1) * Number(this.N)) }
+
+                if (this.BuildTP) {
+                    if (this.C4_1) { x += (Number(this.j.Power.max150.Cm4_1) * Number(this.N)) }
+                    if (this.C4_2) { x += (Number(this.j.Power.max150.Cm4_2) * Number(this.N)) }
+                    if (this.C4_3) { x += (Number(this.j.Power.max150.Cm4_3) * Number(this.N)) }
+                    if (this.C4_4) { x += (Number(this.j.Power.max150.Cm4_4) * Number(this.N)) }
+                    if (this.C4_5) { x += (Number(this.j.Power.max150.Cm4_5) * Number(this.N)) }
+                    if (this.C4_6) { x += (Number(this.j.Power.max150.Cm4_6) * Number(this.N)) }
+                    if (this.C4_7) { x += (Number(this.j.Power.max150.Cm4_7) * Number(this.N)) }
+                    if (this.C4_8) { x += (Number(this.j.Power.max150.Cm4_8) * Number(this.N)) }
+                    if (this.C4_9) { x += (Number(this.j.Power.max150.Cm4_9) * Number(this.N)) }
+                    if (this.C4_10) { x += (Number(this.j.Power.max150.Cm4_10) * Number(this.N)) }
+                    if (this.C4_11) { x += (Number(this.j.Power.max150.Cm4_11) * Number(this.N)) }
+                    if (this.C4_12) { x += (Number(this.j.Power.max150.Cm4_12) * Number(this.N)) }
+                    if (this.C4_13) { x += (Number(this.j.Power.max150.Cm4_13) * Number(this.N)) }
+                    if (this.C4_14) { x += (Number(this.j.Power.max150.Cm4_14) * Number(this.N)) }
+                }
+
+                //3я категория
+                //C1 * N +  ∑ (C2,i * N) +  ∑ (C3,i * N) + строительство ТП  ∑ (C4,i * N) 
+
+
+                return this.round(x)
             } else {
                 return 0
             }

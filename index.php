@@ -222,6 +222,64 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                     комплексов.</p>
         </div>
 
+        <div id="forth_2" v-show="Conditions && VoltageClass !==0 && Build && Calculate == 2 || S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 2">
+                <p class="options">Параметры для расчета стоимости по стандартизированной ставке</p>
+            <div class="index">
+                <p>Индекс изменения сметной стоимости за:</p>
+                <div class="sqrt">3</div>
+                <p class="quart">квартал</p>
+            </div>
+            <div class="source">
+                <div class="select">
+                    <select class="no_styled">
+                        <option value="0" disabled selected> Выберите тип линии </option>
+                        <option value="1">Воздушная линия 0,4кВ</option>
+                        <option value="2">Воздушная линия изолированная 0,4кВ</option>
+                        <option value="3">Воздушная линия 6-10кВ</option>
+                        <option value="4">Воздушная линия изолированная 6-10кВ</option>
+                        <option value="5">Кабельная линия 0,4кВ</option>
+                        <option value="6">Кабельная линия 6-10кВ</option>
+                        <option value="7">Кабельная линия 0,4кВ с приминением ГНБ*</option>
+                    </select>
+                </div>
+                <div class="long">
+                    <div class="left_text"><input type="text" placeholder="длина"> <span>км</span></div>
+                    <div class="index">
+                        <p>Индекс</p>
+                        <div class="sqrt">4.95</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="source">
+                <div class="select">
+                    <select class="no_styled">
+                        <option value="0" disabled selected> Выберите тип линии </option>
+                        <option value="1">Воздушная линия 0,4кВ</option>
+                        <option value="2">Воздушная линия изолированная 0,4кВ</option>
+                        <option value="3">Воздушная линия 6-10кВ</option>
+                        <option value="4">Воздушная линия изолированная 6-10кВ</option>
+                        <option value="5">Кабельная линия 0,4кВ</option>
+                        <option value="6">Кабельная линия 6-10кВ</option>
+                        <option value="7">Кабельная линия 0,4кВ с приминением ГНБ*</option>
+                    </select>
+                </div>
+                <div class="long">
+                    <div class="left_text"><input type="text" placeholder="длина"> <span>км</span></div>
+                    <div class="index">
+                        <p>Индекс</p>
+                        <div class="sqrt">4.95</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="btn"><a href="#">Добавить линию</a></div>
+
+            <p class="sourse_bottom"><b>*ГНБ -</b> Горизонтальное бурение или Горизонтальное направленное бурение — управляемый бестраншейный <br>
+                    метод прокладывания подземных коммуникаций, основанный на использовании специальных буровых <br>
+                    комплексов.</p>
+        </div>
+
         <div class="block" v-show="Conditions && VoltageClass !==0  && Build && Calculate == 2 || S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 2">
             <div class="source">
                 <p class="in_2 check">
