@@ -58,6 +58,9 @@
     .index {
         margin-left: 270px;
     }
+    #forth_2 .index p {
+        white-space: nowrap;
+    }
     #forth_2 .source {
         flex-direction: column;
         height: 125px;
@@ -66,7 +69,7 @@
     #forth_2 .long {
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: space-between;
     }
     #forth_2 span {
         color: black;
@@ -75,7 +78,7 @@
     }
     #forth_2 .source .index {
         width: 102px;
-        margin: 2px 0 0 115px;
+        margin: 2px 0 0 0;
     }
     #forth_2 button {
         padding: 15px;
@@ -229,7 +232,7 @@
         display: none;
     }
     #second {
-        padding: 0 20px 25px 15px;
+        padding: 0 20px 0 15px;
     }
     #second li {
         font-size: 13px;
@@ -296,12 +299,16 @@
         margin-left: 0;
         width: auto;
     }
+    #forth_2 .index p {
+        white-space: normal;
+    }
     .index .sqrt {
         margin: 33px 0 0 0;
     }
     .index .quart {
         height: 18px;
         margin-top: 18px;
+        padding: 15px 0 15px 15px;
     }
     #forth_2 .source {
         width: auto flex-direction: column;
@@ -335,17 +342,18 @@
         width: 102px;
         margin: 2px;
     }
-    #forth_2 button {
-        padding: 15px;
-        background: #59778c;
-        color: white;
-        font-size: 14px;
-        text-transform: none;
-        font-weight: 500;
-        margin: 0 15px 25px 15px;
-        border-radius: 5px;
-        width: 270px;
+    #forth_2 .btn {
+        margin: 25px 15px 25px 15px;
         text-align: center;
+    }
+    #forth_2 .btn a {
+        position: relative;
+        width: auto;
+        margin: 0 auto;
+    }
+    p .source_bottom {
+        padding: 0;
+        margin: 0;
     }
     .block {
         width: auto;

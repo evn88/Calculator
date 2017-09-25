@@ -161,7 +161,6 @@ span .jd-radio {
 #third {
     position: relative;
     padding: 0 40px 0 40px;
-    margin-top: 30px;
 }
 
 .calc {
@@ -298,11 +297,11 @@ p.sourse_bottom {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    width: 435px;
-    margin-left: 670px;
+    width: auto;
+    margin: 0 10px 0 25px;
 }
 
-#forth_2 p {
+#forth_2 .index p {
     padding: 15px;
 }
 
@@ -361,20 +360,26 @@ p.sourse_bottom {
     color: white;
 }
 
-#forth_2 button {
-    padding: 15px;
-    background: #59778c;
-    color: white;
-    font-size: 14px;
-    text-transform: none;
-    font-weight: 500;
-    margin: 25px;
-    border-radius: 5px;
-    width: 220px;
+#forth_2 .btn {
+    margin: 40px 0 40px 25px;
 }
 
-#forth_2 button:hover {
+#forth_2 .btn a {
+    padding: 15px 40px 15px 40px;
+    text-decoration: none;
+    color: white;
+    background: #59778c;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+}
+
+#forth_2 .btn a:hover {
     background: #678da8;
+}
+
+p .source_bottom {
+    padding: 0;
 }
 
 .block {

@@ -185,14 +185,35 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                     </select>
                 </div>
                 <div class="long">
-                    <div class=""><input type="text" placeholder="длина"> <span>км</span></div>
+                    <div class="left_text"><input type="text" placeholder="длина"> <span>км</span></div>
                     <div class="index">
                         <p>Индекс</p>
                         <div class="sqrt">4.95</div>
                     </div>
                 </div>
             </div>
-            <button>Добавить линию</button>
+            <div class="btn"><a href="#">Добавить линию</a></div>
+            <div class="source">
+                <div class="select">
+                    <select class="no_styled">
+                        <option value="0" disabled selected> Выберите тип линии </option>
+                        <option value="1">Воздушная линия 0,4кВ</option>
+                        <option value="2">Воздушная линия изолированная 0,4кВ</option>
+                        <option value="3">Воздушная линия 6-10кВ</option>
+                        <option value="4">Воздушная линия изолированная 6-10кВ</option>
+                        <option value="5">Кабельная линия 0,4кВ</option>
+                        <option value="6">Кабельная линия 6-10кВ</option>
+                        <option value="7">Кабельная линия 0,4кВ с приминением ГНБ*</option>
+                    </select>
+                </div>
+                <div class="long">
+                    <div class="left_text"><input type="text" placeholder="длина"> <span>км</span></div>
+                    <div class="index">
+                        <p>Индекс</p>
+                        <div class="sqrt">4.95</div>
+                    </div>
+                </div>
+            </div>
 
 
             <p class="sourse_bottom"><b>*ГНБ -</b> Горизонтальное бурение или Горизонтальное направленное бурение — управляемый бестраншейный <br>
