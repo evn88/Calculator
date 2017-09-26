@@ -11,7 +11,8 @@ var app = new Vue({
         Conditions: false, //признак условия
         Build: false, //необходимо строительство
         BuildTP: false,
-        BuildTP_radio: 0,
+        BuildTP_radio_1: 0,
+        BuildTP_radio_2: 0,
         Calculate: 0, //расчет по power-мощности, standart-стандартизированной
         VoltageClass: 0, //Класс напряжения
         L: 0, //длина линий
@@ -57,9 +58,8 @@ var app = new Vue({
                 this.N = null
             }
         },
-        Calculate: function(Calculate) {
-            if (Calculate == 1) { /*this.resultSt = 0*/ }
-            if (Calculate == 2) { /*this.resultPw = 0*/ }
+        S1: function(S1) {
+            this.resetAllBuilds()
         },
         Conditions: function(Conditions) {
             if (!Conditions) {
@@ -69,9 +69,11 @@ var app = new Vue({
     },
     methods: {
         resetAllBuilds: function() {
+            this.N = 0
             this.Build = false //необходимо строительство
             this.BuildTP = false
-            this.BuildTP_radio = 0
+            this.BuildTP_radio_1 = 0
+            this.BuildTP_radio_2 = 0
             this.Calculate = 0 //расчет по power-мощности, standart-стандартизированной
             this.VoltageClass = 0 //Класс напряжения
             this.L = 0 //длина линий
@@ -110,16 +112,21 @@ var app = new Vue({
     },
     computed: {
         resultPw: function() {
-            if (this.j && this.N !== 0) {
-                var arr = [];
-                for (var i = 0; i <= 1; i++) {
-                    //console.log(this.j.Power.max150.Cm2[i])
-                }
-
+            if (this.j && this.N !== 0 ) {
+                var x = 0
                 //формула для расчета по мощности 2й категории без ТП
                 //C1 * N +  ∑ (C2,i * N) +  ∑ (C3,i * N) +  ∑ (C2,i N) + ( ∑ (C3,i * N)  + строительство ТП  ∑ (C4,i * N) 
-                var x = 0
-                x = Number(this.N) * Number(this.j.C1.max15)
+                if (this.N <= 15 && !this.Conditions){
+                    return 550
+                }
+
+                if (this.N <= 15){
+                    x = Number(this.N) * Number(this.j.C1.max15)
+                }
+                if (this.N > 15 && this.Calculate == 1 || this.S1 == 2) {
+                    x = Number(this.N) * Number(this.j.C1.max150)
+                }
+            
 
                 //первый источник
                 if (this.Ch2_1) { x += (Number(this.j.Power.max150.Cm2_1) * Number(this.N)) }
@@ -140,10 +147,12 @@ var app = new Vue({
                 if (this.Ch2__3_2_1) { x += (Number(this.j.Power.max150.Cm3_2_1) * Number(this.N)) }
 
 
-                if (this.BuildTP && this[this.BuildTP_radio]) {
-                    var radio = this.BuildTP_radio
-                    console.log(app.j.Power.max150[radio], this.BuildTP_radio, radio)
-                    //x += (Number(this.j.Power.max150[this.BuildTP_radio]) * Number(this.N))                   
+                if ((this.BuildTP && this.BuildTP_radio_1) || (this.BuildTP && this.BuildTP_radio_2)) {
+                    var radio_1 = this.BuildTP_radio_1
+                    var radio_2 = this.BuildTP_radio_2
+
+                    x += (Number(this.j.Power.max150[this.BuildTP_radio_1]) * Number(this.N))   
+                    x += (Number(this.j.Power.max150[this.BuildTP_radio_2]) * Number(this.N))                   
                 }
 
                 //3я категория
@@ -157,7 +166,13 @@ var app = new Vue({
         },
         resultSt: function() {
             if (this.j && this.N !== 0) {
-                return 500
+                var y = 0
+
+                if (this.N <= 15 && !this.Conditions){
+                    return 550
+                }
+
+                return this.result(y)
             } else {
                 return 0
             }
@@ -178,8 +193,12 @@ var app = new Vue({
                 self.Category = n.target.value
             })
 
-            $('input[name=BuildTP_radio]').change(function(n) {
-                self.BuildTP_radio = n.target.value
+            $('input[name=BuildTP_radio_1]').change(function(n) {
+                self.BuildTP_radio_1 = n.target.value
+            })
+
+            $('input[name=BuildTP_radio_2]').change(function(n) {
+                self.BuildTP_radio_2 = n.target.value
             })
         })
     }
