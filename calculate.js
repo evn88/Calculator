@@ -134,21 +134,11 @@ var app = new Vue({
                 if (this.Ch2__3_1_1) { x += (Number(this.j.Power.max150.Cm3_1_1) * Number(this.N)) }
                 if (this.Ch2__3_2_1) { x += (Number(this.j.Power.max150.Cm3_2_1) * Number(this.N)) }
 
-                if (this.BuildTP) {
-                    if (this.C4_1) { x += (Number(this.j.Power.max150.Cm4_1) * Number(this.N)) }
-                    if (this.C4_2) { x += (Number(this.j.Power.max150.Cm4_2) * Number(this.N)) }
-                    if (this.C4_3) { x += (Number(this.j.Power.max150.Cm4_3) * Number(this.N)) }
-                    if (this.C4_4) { x += (Number(this.j.Power.max150.Cm4_4) * Number(this.N)) }
-                    if (this.C4_5) { x += (Number(this.j.Power.max150.Cm4_5) * Number(this.N)) }
-                    if (this.C4_6) { x += (Number(this.j.Power.max150.Cm4_6) * Number(this.N)) }
-                    if (this.C4_7) { x += (Number(this.j.Power.max150.Cm4_7) * Number(this.N)) }
-                    if (this.C4_8) { x += (Number(this.j.Power.max150.Cm4_8) * Number(this.N)) }
-                    if (this.C4_9) { x += (Number(this.j.Power.max150.Cm4_9) * Number(this.N)) }
-                    if (this.C4_10) { x += (Number(this.j.Power.max150.Cm4_10) * Number(this.N)) }
-                    if (this.C4_11) { x += (Number(this.j.Power.max150.Cm4_11) * Number(this.N)) }
-                    if (this.C4_12) { x += (Number(this.j.Power.max150.Cm4_12) * Number(this.N)) }
-                    if (this.C4_13) { x += (Number(this.j.Power.max150.Cm4_13) * Number(this.N)) }
-                    if (this.C4_14) { x += (Number(this.j.Power.max150.Cm4_14) * Number(this.N)) }
+
+                if (this.BuildTP && this[this.BuildTP_radio]) {
+                    var radio = this.BuildTP_radio
+                    console.log(app.j.Power.max150[radio], this.BuildTP_radio)
+                    //x += (Number(this.j.Power.max150[this.BuildTP_radio]) * Number(this.N))                   
                 }
 
                 //3я категория

@@ -136,24 +136,24 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                             <span class="jq-checkbox" :class="{ checked: BuildTP }"></span> Строительство ТП
                         </label>
                     </p>
-                    <div class="inner_wrap">
+                    <div class="inner_wrap" v-show="BuildTP">
                         <div class="left">
-                            <p><label><input type="radio" name="BuildTP" value="C4_1" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 25 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="C4_2" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 40 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="C4_3" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 63 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="C4_4" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 100 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="C4_5" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 160 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="C4_6" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 250 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="C4_7" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 400 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP_radio" value="C4_1" v-model="BuildTP_radio" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 25 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP_radio" value="C4_2" v-model="BuildTP_radio" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 40 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP_radio" value="C4_3" v-model="BuildTP_radio" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 63 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP_radio" value="C4_4" v-model="BuildTP_radio" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 100 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP_radio" value="C4_5" v-model="BuildTP_radio" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 160 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP_radio" value="C4_6" v-model="BuildTP_radio" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 250 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP_radio" value="C4_7" v-model="BuildTP_radio" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 400 кВА</label></p>
                         </div>
                         <div class="right">
-                            <p><label><input type="radio" name="BuildTP" value="C4_8" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 630 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="C4_9" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x160 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="C4_10" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x250 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="C4_11" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x400 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="C4_12" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x630 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="C4_13" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x1000 кВА</label></p>
-                            <p><label><input type="radio" name="BuildTP" value="C4_14" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x1250 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP_radio" value="C4_8"  v-model="BuildTP_radio" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 630 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP_radio" value="C4_9"  v-model="BuildTP_radio" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x160 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP_radio" value="C4_10" v-model="BuildTP_radio" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x250 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP_radio" value="C4_11" v-model="BuildTP_radio" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x400 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP_radio" value="C4_12" v-model="BuildTP_radio" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x630 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP_radio" value="C4_13" v-model="BuildTP_radio" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x1000 кВА</label></p>
+                            <p><label><input type="radio" name="BuildTP_radio" value="C4_14" v-model="BuildTP_radio" :disabled="!BuildTP"> Строительство ТП-6(10) кВ 2x1250 кВА</label></p>
                         </div>
                     </div>
                 </div>
