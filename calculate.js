@@ -96,8 +96,13 @@ var app = new Vue({
             this.Ch2__3_1_1 = false
             this.Ch2__3_2_1 = false
         },
-        round: function(e) {
-            return Math.round(e * 100) / 100 //округляем результаты
+        result: function(e) {
+            if (e){
+                e += e * 18 / 100  // +18% НДС
+                return (Math.round(e * 100) / 100) //округляем результаты
+            } else {
+                return 0
+            }
         },
         min15: function() {
 
@@ -137,7 +142,7 @@ var app = new Vue({
 
                 if (this.BuildTP && this[this.BuildTP_radio]) {
                     var radio = this.BuildTP_radio
-                    console.log(app.j.Power.max150[radio], this.BuildTP_radio)
+                    console.log(app.j.Power.max150[radio], this.BuildTP_radio, radio)
                     //x += (Number(this.j.Power.max150[this.BuildTP_radio]) * Number(this.N))                   
                 }
 
@@ -145,7 +150,7 @@ var app = new Vue({
                 //C1 * N +  ∑ (C2,i * N) +  ∑ (C3,i * N) + строительство ТП  ∑ (C4,i * N) 
 
 
-                return this.round(x)
+                return this.result(x)
             } else {
                 return 0
             }
