@@ -222,7 +222,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                     комплексов.</p>
         </div>
 </div>
-        <div class="right_2">
+        <div class="right_2" v-show="Category == 2">
         <div id="forth_2" v-show="Conditions && VoltageClass !==0 && Build && Calculate == 2 || S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 2">
                 <p class="options">Параметры для расчета стоимости по стандартизированной ставке</p>
             <div class="index">
