@@ -23,7 +23,6 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                     <label>Заявляемая мощность
                     <input type="number" id="N" min="0" max="99999" v-model.number="N" :disabled="S1==0 || Category==0" required>
                     кВт</label>
-                    <br>
                     <p class="errortext" v-show="N && isNValid">Вы ввели максимально допустимое количество символов</p>
                 </div>
             </div>
@@ -73,7 +72,6 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                         </label>
                     </p>
                 </div>
-                <br>
                 <div class="select">
                     <select size="1" v-model.lazy="VoltageClass" class="no_styled">
                         <option value="0" disabled selected> Класс напряжения </option>
@@ -164,7 +162,9 @@ $APPLICATION->SetTitle("Калькулятор технологического 
         </div>
 
         <!-- по стандартизированной ставке -->
-        <div id="forth_2" v-show="Conditions && VoltageClass !==0 && Build && Calculate == 2 || S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 2">
+    <div class="forth_2_wrap">
+        <div class="left_2">
+            <div id="forth_2" v-show="Conditions && VoltageClass !==0 && Build && Calculate == 2 || S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 2">
                 <p class="options">Параметры для расчета стоимости по стандартизированной ставке</p>
             <div class="index">
                 <p>Индекс изменения сметной стоимости за:</p>
@@ -221,7 +221,8 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                     метод прокладывания подземных коммуникаций, основанный на использовании специальных буровых <br>
                     комплексов.</p>
         </div>
-
+</div>
+        <div class="right_2">
         <div id="forth_2" v-show="Conditions && VoltageClass !==0 && Build && Calculate == 2 || S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 2">
                 <p class="options">Параметры для расчета стоимости по стандартизированной ставке</p>
             <div class="index">
@@ -250,28 +251,27 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                     </div>
                 </div>
             </div>
-
             <div class="source">
-                <div class="select">
-                    <select class="no_styled">
-                        <option value="0" disabled selected> Выберите тип линии </option>
-                        <option value="1">Воздушная линия 0,4кВ</option>
-                        <option value="2">Воздушная линия изолированная 0,4кВ</option>
-                        <option value="3">Воздушная линия 6-10кВ</option>
-                        <option value="4">Воздушная линия изолированная 6-10кВ</option>
-                        <option value="5">Кабельная линия 0,4кВ</option>
-                        <option value="6">Кабельная линия 6-10кВ</option>
-                        <option value="7">Кабельная линия 0,4кВ с приминением ГНБ*</option>
-                    </select>
-                </div>
-                <div class="long">
-                    <div class="left_text"><input type="text" placeholder="длина"> <span>км</span></div>
-                    <div class="index">
-                        <p>Индекс</p>
-                        <div class="sqrt">4.95</div>
+                    <div class="select">
+                        <select class="no_styled">
+                            <option value="0" disabled selected> Выберите тип линии </option>
+                            <option value="1">Воздушная линия 0,4кВ</option>
+                            <option value="2">Воздушная линия изолированная 0,4кВ</option>
+                            <option value="3">Воздушная линия 6-10кВ</option>
+                            <option value="4">Воздушная линия изолированная 6-10кВ</option>
+                            <option value="5">Кабельная линия 0,4кВ</option>
+                            <option value="6">Кабельная линия 6-10кВ</option>
+                            <option value="7">Кабельная линия 0,4кВ с приминением ГНБ*</option>
+                        </select>
+                    </div>
+                    <div class="long">
+                        <div class="left_text"><input type="text" placeholder="длина"> <span>км</span></div>
+                        <div class="index">
+                            <p>Индекс</p>
+                            <div class="sqrt">4.95</div>
+                        </div>
                     </div>
                 </div>
-            </div>
             
             <div class="btn"><a href="#">Добавить линию</a></div>
 
@@ -279,6 +279,9 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                     метод прокладывания подземных коммуникаций, основанный на использовании специальных буровых <br>
                     комплексов.</p>
         </div>
+    </div>
+</div>
+       
 
         <div class="block" v-show="Conditions && VoltageClass !==0  && Build && Calculate == 2 || S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 2">
             <div class="source">

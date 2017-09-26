@@ -52,8 +52,19 @@
     .sourse_bottom br {
         display: none;
     }
+    .forth_2_wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: auto;
+    }
+    .left_2,
+    .right_2 {
+        margin-top: 25px;
+    }
     #forth_2 {
         width: auto;
+        margin: 0;
     }
     .index {
         margin-left: 270px;
@@ -61,20 +72,13 @@
     #forth_2 .index p {
         white-space: nowrap;
     }
+    .sqrt {
+        margin: 15px 0 15px 0;
+    }
     #forth_2 .source {
         flex-direction: column;
         height: 125px;
         padding-bottom: 22px;
-    }
-    #forth_2 .long {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    #forth_2 span {
-        color: black;
-        font-size: 16px;
-        padding: 15px 0 0 10px;
     }
     #forth_2 .source .index {
         width: 102px;
@@ -89,6 +93,9 @@
         font-weight: 500;
         margin: 25px;
         border-radius: 5px;
+    }
+    .block {
+        margin-top: 25px;
     }
     .block .source {
         margin-bottom: 25px;
@@ -239,7 +246,6 @@
     }
     #third {
         padding: 0 15px 0 15px;
-        margin-bottom: 25px;
     }
     #forth {
         margin: 30px 0 0 0;
@@ -288,12 +294,17 @@
         margin: 0 15px 25px 15px;
         text-align: center;
     }
+    .forth_2_wrap {
+        padding: 0;
+    }
+    .right_2 {
+        margin-top: 25px;
+    }
     #forth_2 {
         width: auto;
-        margin: 0 0 30px 0;
-        border-left: none;
-        border-right: none;
+        margin: 0;
         background: white;
+        border: #e7eff6 2px solid;
     }
     .index {
         margin-left: 0;
@@ -311,7 +322,8 @@
         padding: 15px 0 15px 15px;
     }
     #forth_2 .source {
-        width: auto flex-direction: column;
+        width: auto;
+        flex-direction: column;
         height: 125px;
         padding: 15px;
         margin: 0;
@@ -332,11 +344,6 @@
         color: black;
         font-size: 14px;
         text-align: center;
-    }
-    #forth_2 .left_text {
-        display: flex;
-        flex-direction: row;
-        justify-content: left;
     }
     #forth_2 .source .index {
         width: 102px;
@@ -370,8 +377,11 @@
     .block .right {
         width: auto;
     }
+    .block .source {
+        margin-bottom: 0;
+    }
     #fifth {
-        margin: 25px 15px 0 15px;
+        margin: 0 15px 0 15px;
         width: auto;
     }
     #fifth button {

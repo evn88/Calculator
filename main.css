@@ -163,6 +163,10 @@ span .jd-radio {
     padding: 0 40px 0 40px;
 }
 
+#third .select {
+    margin-top: 25px;
+}
+
 .calc {
     margin-top: 25px;
 }
@@ -286,11 +290,28 @@ p.sourse_bottom {
 
 /* стандарт. индекс */
 
-#forth_2 {
-    margin: 40px;
+.forth_2_wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     width: auto;
+    padding: 0 40px 0 40px;
+}
+
+.left_2,
+.right_2 {
+    width: auto;
+}
+
+#forth_2 {
+    width: 500px;
     background: #f2f4f5;
     border: #59778c 2px solid;
+    margin-top: 40px;
+}
+
+#forth_2 .options {
+    text-align: center;
 }
 
 .index {
@@ -298,7 +319,7 @@ p.sourse_bottom {
     flex-direction: row;
     justify-content: flex-end;
     width: auto;
-    margin: 0 10px 0 25px;
+    margin: 0 10px -25px 10px;
 }
 
 #forth_2 .index p {
@@ -306,7 +327,7 @@ p.sourse_bottom {
 }
 
 .sqrt {
-    margin: 15px 0 15px 0;
+    margin: 15px 0 15px 15px;
     width: 30px;
     height: 20px;
     text-align: center;
@@ -315,11 +336,11 @@ p.sourse_bottom {
 }
 
 #forth_2 .source {
-    margin: 0 25px 0 25px;
     padding: 25px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
+    height: 125px;
 }
 
 #forth_2 input {
@@ -337,6 +358,12 @@ p.sourse_bottom {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+#forth_2 .left_text {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
 }
 
 #forth_2 span {
@@ -378,12 +405,12 @@ p.sourse_bottom {
     background: #678da8;
 }
 
-p .source_bottom {
+#forth_2 .source_bottom {
     padding: 0;
 }
 
 .block {
-    margin: 25px 40px 0 40px;
+    margin: 40px 40px 0 40px;
     width: auto;
     background: #f2f4f5;
     border: #59778c 2px solid;
