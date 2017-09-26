@@ -291,7 +291,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                         <span class="jq-checkbox" :class="{ checked: BuildTP }"></span> Строительство ТП {{BuildTP_radio}}
                     </label>
                 </p>
-                <div class="inner_wrap">
+                <div class="inner_wrap" v-show="BuildTP">
                     <div class="left">
                         <p><label><input type="radio" name="BuildTP_radio" value="25"  :disabled="!BuildTP"> Строительство ТП-6(10) кВ 25 кВА</label></p>
                         <p><label><input type="radio" name="BuildTP_radio" value="40"  :disabled="!BuildTP"> Строительство ТП-6(10) кВ 40 кВА</label></p>
