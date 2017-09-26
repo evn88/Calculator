@@ -42,7 +42,6 @@ var app = new Vue({
     },
     watch: {
         N: function(N) {
-
             if (N == 0) {
                 this.resultPw = 0
                 this.resultSt = 0
@@ -58,13 +57,8 @@ var app = new Vue({
                 this.N = null
             }
         },
-        S1: function(S1) {
+        S1: function() {
             this.resetAllBuilds()
-        },
-        Conditions: function(Conditions) {
-            if (!Conditions) {
-                this.resetAllBuilds()
-            }
         }
     },
     methods: {
@@ -99,8 +93,8 @@ var app = new Vue({
             this.Ch2__3_2_1 = false
         },
         result: function(e) {
-            if (e){
-                e += e * 18 / 100  // +18% НДС
+            if (e) {
+                e += e * 18 / 100 // +18% НДС
                 return (Math.round(e * 100) / 100) //округляем результаты
             } else {
                 return 0
@@ -112,47 +106,45 @@ var app = new Vue({
     },
     computed: {
         resultPw: function() {
-            if (this.j && this.N !== 0 ) {
+            if (this.j && this.N !== 0) {
                 var x = 0
-                //формула для расчета по мощности 2й категории без ТП
-                //C1 * N +  ∑ (C2,i * N) +  ∑ (C3,i * N) +  ∑ (C2,i N) + ( ∑ (C3,i * N)  + строительство ТП  ∑ (C4,i * N) 
-                if (this.N <= 15 && !this.Conditions){
+                var N = Number(this.N)
+                    //формула для расчета по мощности 2й категории без ТП
+                    //C1 * N +  ∑ (C2,i * N) +  ∑ (C3,i * N) +  ∑ (C2,i N) + ( ∑ (C3,i * N)  + строительство ТП  ∑ (C4,i * N) 
+                if (N <= 15 && !this.Conditions) {
                     return 550
                 }
 
-                if (this.N <= 15){
-                    x = Number(this.N) * Number(this.j.C1.max15)
+                if (N <= 15) {
+                    x = N * Number(this.j.C1.max15)
                 }
-                if (this.N > 15 && this.Calculate == 1 || this.S1 == 2) {
-                    x = Number(this.N) * Number(this.j.C1.max150)
+                if (N > 15 || this.S1 == 2) {
+                    x = N * Number(this.j.C1.max150)
                 }
-            
 
-                //первый источник
-                if (this.Ch2_1) { x += (Number(this.j.Power.max150.Cm2_1) * Number(this.N)) }
-                if (this.Ch2_2) { x += (Number(this.j.Power.max150.Cm2_2) * Number(this.N)) }
+                if (this.Build) {
+                    //первый источник
+                    if (this.Ch2_1) { x += (Number(this.j.Power.max150.Cm2_1) * N) }
+                    if (this.Ch2_2) { x += (Number(this.j.Power.max150.Cm2_2) * N) }
 
-                if (this.Ch3_1) { x += (Number(this.j.Power.max150.Cm3_1) * Number(this.N)) }
-                if (this.Ch3_2) { x += (Number(this.j.Power.max150.Cm3_2) * Number(this.N)) }
-                if (this.Ch3_1_1) { x += (Number(this.j.Power.max150.Cm3_1_1) * Number(this.N)) }
-                if (this.Ch3_2_1) { x += (Number(this.j.Power.max150.Cm3_2_1) * Number(this.N)) }
+                    if (this.Ch3_1) { x += (Number(this.j.Power.max150.Cm3_1) * N) }
+                    if (this.Ch3_2) { x += (Number(this.j.Power.max150.Cm3_2) * N) }
+                    if (this.Ch3_1_1) { x += (Number(this.j.Power.max150.Cm3_1_1) * N) }
+                    if (this.Ch3_2_1) { x += (Number(this.j.Power.max150.Cm3_2_1) * N) }
 
-                //второй источник
-                if (this.Ch2__2_1) { x += (Number(this.j.Power.max150.Cm2_1) * Number(this.N)) }
-                if (this.Ch2__2_2) { x += (Number(this.j.Power.max150.Cm2_2) * Number(this.N)) }
+                    //второй источник
+                    if (this.Ch2__2_1) { x += (Number(this.j.Power.max150.Cm2_1) * N) }
+                    if (this.Ch2__2_2) { x += (Number(this.j.Power.max150.Cm2_2) * N) }
 
-                if (this.Ch2__3_1) { x += (Number(this.j.Power.max150.Cm3_1) * Number(this.N)) }
-                if (this.Ch2__3_2) { x += (Number(this.j.Power.max150.Cm3_2) * Number(this.N)) }
-                if (this.Ch2__3_1_1) { x += (Number(this.j.Power.max150.Cm3_1_1) * Number(this.N)) }
-                if (this.Ch2__3_2_1) { x += (Number(this.j.Power.max150.Cm3_2_1) * Number(this.N)) }
+                    if (this.Ch2__3_1) { x += (Number(this.j.Power.max150.Cm3_1) * N) }
+                    if (this.Ch2__3_2) { x += (Number(this.j.Power.max150.Cm3_2) * N) }
+                    if (this.Ch2__3_1_1) { x += (Number(this.j.Power.max150.Cm3_1_1) * N) }
+                    if (this.Ch2__3_2_1) { x += (Number(this.j.Power.max150.Cm3_2_1) * N) }
 
-
-                if ((this.BuildTP && this.BuildTP_radio_1) || (this.BuildTP && this.BuildTP_radio_2)) {
-                    var radio_1 = this.BuildTP_radio_1
-                    var radio_2 = this.BuildTP_radio_2
-
-                    x += (Number(this.j.Power.max150[this.BuildTP_radio_1]) * Number(this.N))   
-                    x += (Number(this.j.Power.max150[this.BuildTP_radio_2]) * Number(this.N))                   
+                    if (this.BuildTP && this.Calculate !== 0) {
+                        console.log(this["BuildTP_radio_" + this.Calculate])
+                        x += (Number(this.j.Power.max150[this["BuildTP_radio_" + this.Calculate]]) * N)
+                    }
                 }
 
                 //3я категория
@@ -168,7 +160,7 @@ var app = new Vue({
             if (this.j && this.N !== 0) {
                 var y = 0
 
-                if (this.N <= 15 && !this.Conditions){
+                if (this.N <= 15 && !this.Conditions) {
                     return 550
                 }
 
@@ -193,11 +185,12 @@ var app = new Vue({
                 self.Category = n.target.value
             })
 
-            $('input[name=BuildTP_radio_1]').change(function(n) {
+            $('.BuildTP_radio_1').change(function(n) {
+                console.log("change: ", n.target.value)
                 self.BuildTP_radio_1 = n.target.value
             })
 
-            $('input[name=BuildTP_radio_2]').change(function(n) {
+            $('.BuildTP_radio_2').change(function(n) {
                 self.BuildTP_radio_2 = n.target.value
             })
         })
