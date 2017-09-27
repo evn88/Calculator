@@ -60,7 +60,7 @@
     }
     .left_2,
     .right_2 {
-        margin-top: 25px;
+        margin: 25px 40px 25px 40px;
     }
     #forth_2 {
         width: auto;
@@ -93,9 +93,6 @@
         font-weight: 500;
         margin: 25px;
         border-radius: 5px;
-    }
-    .block {
-        margin-top: 25px;
     }
     .block .source {
         margin-bottom: 25px;
@@ -257,7 +254,6 @@
         border: #59778c 1px solid;
         margin: 25px 15px 0 15px;
         width: auto;
-        padding-bottom: 8px;
     }
     .source .in {
         background: #59778c;
@@ -297,8 +293,10 @@
     .forth_2_wrap {
         padding: 0;
     }
+    .left_2,
     .right_2 {
-        margin-top: 25px;
+        width: auto;
+        margin: 25px 0 25px 0;
     }
     #forth_2 {
         width: auto;
@@ -378,7 +376,7 @@
         width: auto;
     }
     .block .source {
-        margin-bottom: 0;
+        margin: 0 15px 0 15px;
     }
     #fifth {
         margin: 0 15px 0 15px;
