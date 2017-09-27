@@ -127,7 +127,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                         </div>
                     </div>
                 </div>
-                <div class="source">
+                <div class="source" v-show="Show_BuildTP">
                     <p class="in_2 check">
                         <label>
                             <input type="checkbox" value="check" v-model="BuildTP">

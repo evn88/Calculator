@@ -10,9 +10,10 @@ var app = new Vue({
         N: 0, //заявленная мощность
         Conditions: false, //признак условия
         Build: false, //необходимо строительство
-        BuildTP: false,
-        BuildTP_radio_1: 0,
-        BuildTP_radio_2: 0,
+        BuildTP: false, //строительство ТП
+        Show_BuildTP: true, //показывать блок строительства ТП
+        BuildTP_radio_1: 0, //по мощности 
+        BuildTP_radio_2: 0, //по стандартизированной
         Calculate: 0, //расчет по power-мощности, standart-стандартизированной
         VoltageClass: 0, //Класс напряжения
         L: [0], //длина линий
@@ -38,20 +39,20 @@ var app = new Vue({
         Ch2__3_2_1: false,
 
         //отображать/скрывать элементы
-        Show_Ch2_1:      false,
-        Show_Ch2_2:      false,
-        Show_Ch2_3:      false,
-        Show_Ch2_4:      false,
-        Show_Ch3_1:      false,
-        Show_Ch3_2:      false,
-        Show_Ch3_1_1:    false,
-        Show_Ch3_2_1:    false,
-        Show_Ch2__2_1:   false,
-        Show_Ch2__2_2:   false,
-        Show_Ch2__2_3:   false,
-        Show_Ch2__2_4:   false,
-        Show_Ch2__3_1:   false,
-        Show_Ch2__3_2:   false,
+        Show_Ch2_1: false,
+        Show_Ch2_2: false,
+        Show_Ch2_3: false,
+        Show_Ch2_4: false,
+        Show_Ch3_1: false,
+        Show_Ch3_2: false,
+        Show_Ch3_1_1: false,
+        Show_Ch3_2_1: false,
+        Show_Ch2__2_1: false,
+        Show_Ch2__2_2: false,
+        Show_Ch2__2_3: false,
+        Show_Ch2__2_4: false,
+        Show_Ch2__3_1: false,
+        Show_Ch2__3_2: false,
         Show_Ch2__3_1_1: false,
         Show_Ch2__3_2_1: false,
 
@@ -125,41 +126,72 @@ var app = new Vue({
                 var x = 0
                 var N = Number(this.N)
                 var max = "max150"
-                //формула для расчета по мощности 2й категории без ТП
-                //C1 * N +  ∑ (C2,i * N) +  ∑ (C3,i * N) +  ∑ (C2,i N) + ( ∑ (C3,i * N)  + строительство ТП  ∑ (C4,i * N) 
-                
+                    //формула для расчета по мощности 2й категории без ТП
+                    //C1 * N +  ∑ (C2,i * N) +  ∑ (C3,i * N) +  ∑ (C2,i N) + ( ∑ (C3,i * N)  + строительство ТП  ∑ (C4,i * N) 
+
                 //для постоянного присоединения
                 //без условий
                 if (N <= 15 && !this.Conditions) {
-
                     return 550
                 }
 
                 //для постоянного присоединения
                 //при условии
+                // до 15
                 if (N <= 15) {
                     max = "max150"
-                    x = N * Number(this.j.C1[max])
+                        //x = N * Number(this.j.C1[max])
 
-                    this.Show_Ch2_1   = true  //вл 0,4
-                    this.Show_Ch2_3   = true  //вл 6-10
-                    this.Show_Ch3_1   = true  //кл 0,4
-                    this.Show_Ch3_2   = true  //кл 6-10
-                    this.Show_Ch3_1_1 = true    //кл 0,4ГНБ
+                    this.Show_Ch2_1 = true //вл 0,4
+                    this.Show_Ch2_3 = true //вл 6-10
+                    this.Show_Ch3_1 = true //кл 0,4
+                    this.Show_Ch3_2 = true //кл 6-10
+                    this.Show_Ch3_1_1 = true //кл 0,4ГНБ
+                        //прячем строительство ТП если класс 6-10
+                    if (this.VoltageClass == 2) { this.Show_BuildTP = false } else { this.Show_BuildTP = true }
 
                 } else {
-                    this.Show_Ch2_1   = false  //вл 0,4
-                    this.Show_Ch2_3   = false  //вл 6-10
-                    this.Show_Ch3_1   = false  //кл 0,4
-                    this.Show_Ch3_2   = false  //кл 6-10
-                    this.Show_Ch3_1_1 = false  //кл 0,4ГНБ
+                    this.Show_Ch2_1 = false //вл 0,4
+                    this.Show_Ch2_3 = false //вл 6-10
+                    this.Show_Ch3_1 = false //кл 0,4
+                    this.Show_Ch3_2 = false //кл 6-10
+                    this.Show_Ch3_1_1 = false //кл 0,4ГНБ
+                    this.Show_BuildTP = true
+                }
+
+                // от 16 до 150
+                if (15 <= N && N <= 150) {
+                    max = "max150"
+                        //x = N * Number(this.j.C1[max])
+
+                    this.Show_Ch2_1 = true //вл 0,4
+                    this.Show_Ch2_3 = true //вл 6-10
+                    this.Show_Ch3_1 = true //кл 0,4
+                    this.Show_Ch3_2 = true //кл 6-10
+                    this.Show_Ch3_1_1 = true //кл 0,4ГНБ
+                        //прячем строительство ТП если класс 6-10
+                    if (this.VoltageClass == 2) { this.Show_BuildTP = false } else { this.Show_BuildTP = true }
+                } else {
+                    this.Show_Ch2_1 = false //вл 0,4
+                    this.Show_Ch2_3 = false //вл 6-10
+                    this.Show_Ch3_1 = false //кл 0,4
+                    this.Show_Ch3_2 = false //кл 6-10
+                    this.Show_Ch3_1_1 = false //кл 0,4ГНБ
+                    this.Show_BuildTP = true
+                }
+
+                if (N > 150) {
+                    max = "min150"
+                        //x = N * Number(this.j.C1[max])
+
                 }
 
                 //для временного присоединения
                 if (N > 15 || this.S1 == 2) {
                     max = "max150"
-                    x = N * Number(this.j.C1[max])
                 }
+
+                x = N * Number(this.j.C1[max])
 
                 if (this.Build) {
                     //первый источник
