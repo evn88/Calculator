@@ -38,22 +38,22 @@ var app = new Vue({
         Ch2__3_2_1: false,
 
         //отображать/скрывать элементы
-        Show_Ch2_1:      true,
-        Show_Ch2_2:      true,
-        Show_Ch2_3:      true,
-        Show_Ch2_4:      true,
-        Show_Ch3_1:      true,
-        Show_Ch3_2:      true,
-        Show_Ch3_1_1:    true,
-        Show_Ch3_2_1:    true,
-        Show_Ch2__2_1:   true,
-        Show_Ch2__2_2:   true,
-        Show_Ch2__2_3:   true,
-        Show_Ch2__2_4:   true,
-        Show_Ch2__3_1:   true,
-        Show_Ch2__3_2:   true,
-        Show_Ch2__3_1_1: true,
-        Show_Ch2__3_2_1: true,
+        Show_Ch2_1:      false,
+        Show_Ch2_2:      false,
+        Show_Ch2_3:      false,
+        Show_Ch2_4:      false,
+        Show_Ch3_1:      false,
+        Show_Ch3_2:      false,
+        Show_Ch3_1_1:    false,
+        Show_Ch3_2_1:    false,
+        Show_Ch2__2_1:   false,
+        Show_Ch2__2_2:   false,
+        Show_Ch2__2_3:   false,
+        Show_Ch2__2_4:   false,
+        Show_Ch2__3_1:   false,
+        Show_Ch2__3_2:   false,
+        Show_Ch2__3_1_1: false,
+        Show_Ch2__3_2_1: false,
 
         j: null, // json с константами для расчета
 
@@ -141,12 +141,18 @@ var app = new Vue({
                     max = "max150"
                     x = N * Number(this.j.C1[max])
 
-                    this.Show_Ch2_1 = true
-                    this.Show_Ch2_3 = true
-                    this.Show_Ch3_1 = true
-                    this.Show_Ch3_2 = true
-                    this.Show_Ch3_1_1 = true
+                    this.Show_Ch2_1   = true  //вл 0,4
+                    this.Show_Ch2_3   = true  //вл 6-10
+                    this.Show_Ch3_1   = true  //кл 0,4
+                    this.Show_Ch3_2   = true  //кл 6-10
+                    this.Show_Ch3_1_1 = true    //кл 0,4ГНБ
 
+                } else {
+                    this.Show_Ch2_1   = false  //вл 0,4
+                    this.Show_Ch2_3   = false  //вл 6-10
+                    this.Show_Ch3_1   = false  //кл 0,4
+                    this.Show_Ch3_2   = false  //кл 6-10
+                    this.Show_Ch3_1_1 = false  //кл 0,4ГНБ
                 }
 
                 //для временного присоединения
@@ -157,26 +163,26 @@ var app = new Vue({
 
                 if (this.Build) {
                     //первый источник
-                    if (this.Ch2_1) { x += (Number(this.j.Power.max150.Cm2_1) * N) }
-                    if (this.Ch2_2) { x += (Number(this.j.Power.max150.Cm2_2) * N) }
+                    if (this.Ch2_1 && this.Show_Ch2_1) { x += (Number(this.j.Power.max150.Cm2_1) * N) }
+                    if (this.Ch2_2 && this.Show_Ch2_2) { x += (Number(this.j.Power.max150.Cm2_2) * N) }
 
-                    if (this.Ch3_1) { x += (Number(this.j.Power.max150.Cm3_1) * N) }
-                    if (this.Ch3_2) { x += (Number(this.j.Power.max150.Cm3_2) * N) }
-                    if (this.Ch3_1_1) { x += (Number(this.j.Power.max150.Cm3_1_1) * N) }
-                    if (this.Ch3_2_1) { x += (Number(this.j.Power.max150.Cm3_2_1) * N) }
+                    if (this.Ch3_1 && this.Show_Ch3_1) { x += (Number(this.j.Power.max150.Cm3_1) * N) }
+                    if (this.Ch3_2 && this.Show_Ch3_2) { x += (Number(this.j.Power.max150.Cm3_2) * N) }
+                    if (this.Ch3_1_1 && this.Show_Ch3_1_) { x += (Number(this.j.Power.max150.Cm3_1_1) * N) }
+                    if (this.Ch3_2_1 && this.Show_Ch3_2) { x += (Number(this.j.Power.max150.Cm3_2_1) * N) }
 
                     //второй источник
-                    if (this.Ch2__2_1) { x += (Number(this.j.Power.max150.Cm2_1) * N) }
-                    if (this.Ch2__2_2) { x += (Number(this.j.Power.max150.Cm2_2) * N) }
+                    if (this.Ch2__2_1 && this.Show_Ch2_1) { x += (Number(this.j.Power.max150.Cm2_1) * N) }
+                    if (this.Ch2__2_2 && this.Show_Ch2_2) { x += (Number(this.j.Power.max150.Cm2_2) * N) }
 
-                    if (this.Ch2__3_1) { x += (Number(this.j.Power.max150.Cm3_1) * N) }
-                    if (this.Ch2__3_2) { x += (Number(this.j.Power.max150.Cm3_2) * N) }
-                    if (this.Ch2__3_1_1) { x += (Number(this.j.Power.max150.Cm3_1_1) * N) }
-                    if (this.Ch2__3_2_1) { x += (Number(this.j.Power.max150.Cm3_2_1) * N) }
+                    if (this.Ch2__3_1 && this.Show_Ch3_1) { x += (Number(this.j.Power.max150.Cm3_1) * N) }
+                    if (this.Ch2__3_2 && this.Show_Ch3_2) { x += (Number(this.j.Power.max150.Cm3_2) * N) }
+                    if (this.Ch2__3_1_1 && this.Show_Ch3_1) { x += (Number(this.j.Power.max150.Cm3_1_1) * N) }
+                    if (this.Ch2__3_2_1 && this.Show_Ch3_2) { x += (Number(this.j.Power.max150.Cm3_2_1) * N) }
 
                     //строительство ТП
                     if (this.BuildTP && this.Calculate !== 0) {
-                        console.log(this["BuildTP_radio_" + this.Calculate])
+                        //console.log(this["BuildTP_radio_" + this.Calculate])
                         x += (Number(this.j.Power.max150[this["BuildTP_radio_" + this.Calculate]]) * N)
                     }
                 }
