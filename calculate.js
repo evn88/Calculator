@@ -56,6 +56,22 @@ var app = new Vue({
         Show_Ch2__3_1_1: false,
         Show_Ch2__3_2_1: false,
 
+        //Отоброжать строительство ТП
+        radio1: false,
+        radio2: false,
+        radio3: false,
+        radio4: false,
+        radio5: false,
+        radio6: false,
+        radio7: false,
+        radio8: false,
+        radio9: false,
+        radio10: false,
+        radio11: false,
+        radio12: false,
+        radio13: false,
+        radio14: false,
+
         j: null, // json с константами для расчета
 
     },
@@ -111,8 +127,18 @@ var app = new Vue({
             this.Ch2__3_1_1 = false
             this.Ch2__3_2_1 = false
         },
-        showRadio: function(arr){
-            //if()
+        showRadio: function(arr) {
+            //Сбрасываем значения
+            //console.log("run")
+            for (var i = 1; i <= 14; i++) {
+                this["radio" + i] = false
+                    //console.log(i + " = false")
+            }
+            if (Array.isArray(arr)) {
+                arr.forEach(function(element, i) {
+                    this["radio" + element] = true
+                }, this);
+            }
         },
         result: function(e) {
             if (e) {
@@ -128,42 +154,33 @@ var app = new Vue({
             if (this.j && this.N !== 0) {
                 var x = 0
                 var N = Number(this.N)
-                var max = "max150"
+                var max //= "max15"
                     //формула для расчета по мощности 2й категории без ТП
                     //C1 * N +  ∑ (C2,i * N) +  ∑ (C3,i * N) +  ∑ (C2,i N) + ( ∑ (C3,i * N)  + строительство ТП  ∑ (C4,i * N) 
 
                 //для постоянного присоединения
-                //без условий
-                if (N <= 15 && !this.Conditions) {
-                    return 550
-                }
-
-                //для постоянного присоединения
-                //при условии
                 // до 15
                 if (N <= 15) {
-                    max = "max150"
-                        //x = N * Number(this.j.C1[max])
+                    max = "max15"
+                    if (this.Conditions) {
+                        this.Show_Ch2_1 = true //вл 0,4
+                        this.Show_Ch2_3 = true //вл 6-10
+                        this.Show_Ch3_1 = true //кл 0,4
+                        this.Show_Ch3_2 = true //кл 6-10
+                        this.Show_Ch3_1_1 = true //кл 0,4ГНБ
 
-                    this.Show_Ch2_1 = true //вл 0,4
-                    this.Show_Ch2_3 = true //вл 6-10
-                    this.Show_Ch3_1 = true //кл 0,4
-                    this.Show_Ch3_2 = true //кл 6-10
-                    this.Show_Ch3_1_1 = true //кл 0,4ГНБ
                         //прячем строительство ТП если класс 6-10
-                    if (this.VoltageClass == 2) { this.Show_BuildTP = false } else { this.Show_BuildTP = true }
+                        if (this.VoltageClass == 2) { this.Show_BuildTP = false } else { this.Show_BuildTP = true }
 
-                } else {
-                    this.Show_Ch2_1 = false //вл 0,4
-                    this.Show_Ch2_3 = false //вл 6-10
-                    this.Show_Ch3_1 = false //кл 0,4
-                    this.Show_Ch3_2 = false //кл 6-10
-                    this.Show_Ch3_1_1 = false //кл 0,4ГНБ
-                    this.Show_BuildTP = true
+                        if (this.Category == 3) { this.showRadio([1]) }
+                        if (this.Category == 2) { this.showRadio([9]) }
+                    } else {
+                        return 550
+                    }
                 }
 
                 // от 16 до 150
-                if (15 <= N && N <= 150) {
+                if (N > 15 && N <= 150) {
                     max = "max150"
                         //x = N * Number(this.j.C1[max])
 
@@ -172,51 +189,54 @@ var app = new Vue({
                     this.Show_Ch3_1 = true //кл 0,4
                     this.Show_Ch3_2 = true //кл 6-10
                     this.Show_Ch3_1_1 = true //кл 0,4ГНБ
-                        //прячем строительство ТП если класс 6-10
+
+                    //прячем строительство ТП если класс 6-10
                     if (this.VoltageClass == 2) { this.Show_BuildTP = false } else { this.Show_BuildTP = true }
-                } else {
-                    this.Show_Ch2_1 = false //вл 0,4
-                    this.Show_Ch2_3 = false //вл 6-10
-                    this.Show_Ch3_1 = false //кл 0,4
-                    this.Show_Ch3_2 = false //кл 6-10
-                    this.Show_Ch3_1_1 = false //кл 0,4ГНБ
-                    this.Show_BuildTP = true
+
+                    if (this.Category == 3) { this.showRadio([1, 2, 3, 4, 5, 6]) }
+                    if (this.Category == 2) { this.showRadio([12, 13]) }
                 }
 
+                // свыше 150
                 if (N > 150) {
-                    max = "min150"
+                    max = "max150"
                         //x = N * Number(this.j.C1[max])
+                        //Уточнить
 
                 }
 
                 //для временного присоединения
-                if (N > 15 || this.S1 == 2) {
+                if (N > 15 && this.S1 == 2) {
                     max = "max150"
                 }
 
                 x = N * Number(this.j.C1[max])
 
                 if (this.Build) {
+
                     //первый источник
                     if (this.Ch2_1 && this.Show_Ch2_1) { x += (Number(this.j.Power.max150.Cm2_1) * N) }
                     if (this.Ch2_2 && this.Show_Ch2_2) { x += (Number(this.j.Power.max150.Cm2_2) * N) }
 
                     if (this.Ch3_1 && this.Show_Ch3_1) { x += (Number(this.j.Power.max150.Cm3_1) * N) }
                     if (this.Ch3_2 && this.Show_Ch3_2) { x += (Number(this.j.Power.max150.Cm3_2) * N) }
-                    if (this.Ch3_1_1 && this.Show_Ch3_1_) { x += (Number(this.j.Power.max150.Cm3_1_1) * N) }
-                    if (this.Ch3_2_1 && this.Show_Ch3_2) { x += (Number(this.j.Power.max150.Cm3_2_1) * N) }
+                    if (this.Ch3_1_1 && this.Show_Ch3_1_1) { x += (Number(this.j.Power.max150.Cm3_1_1) * N) }
+                    if (this.Ch3_2_1 && this.Show_Ch3_2_1) { x += (Number(this.j.Power.max150.Cm3_2_1) * N) }
 
-                    //второй источник
-                    if (this.Ch2__2_1 && this.Show_Ch2_1) { x += (Number(this.j.Power.max150.Cm2_1) * N) }
-                    if (this.Ch2__2_2 && this.Show_Ch2_2) { x += (Number(this.j.Power.max150.Cm2_2) * N) }
+                    if (this.Category == 2) {
+                        //второй источник
+                        if (this.Ch2__2_1 && this.Show_Ch2_1) { x += (Number(this.j.Power.max150.Cm2_1) * N) }
+                        if (this.Ch2__2_2 && this.Show_Ch2_2) { x += (Number(this.j.Power.max150.Cm2_2) * N) }
 
-                    if (this.Ch2__3_1 && this.Show_Ch3_1) { x += (Number(this.j.Power.max150.Cm3_1) * N) }
-                    if (this.Ch2__3_2 && this.Show_Ch3_2) { x += (Number(this.j.Power.max150.Cm3_2) * N) }
-                    if (this.Ch2__3_1_1 && this.Show_Ch3_1) { x += (Number(this.j.Power.max150.Cm3_1_1) * N) }
-                    if (this.Ch2__3_2_1 && this.Show_Ch3_2) { x += (Number(this.j.Power.max150.Cm3_2_1) * N) }
+                        if (this.Ch2__3_1 && this.Show_Ch3_1) { x += (Number(this.j.Power.max150.Cm3_1) * N) }
+                        if (this.Ch2__3_2 && this.Show_Ch3_2) { x += (Number(this.j.Power.max150.Cm3_2) * N) }
+                        if (this.Ch2__3_1_1 && this.Show_Ch3_1_1) { x += (Number(this.j.Power.max150.Cm3_1_1) * N) }
+                        if (this.Ch2__3_2_1 && this.Show_Ch3_2_1) { x += (Number(this.j.Power.max150.Cm3_2_1) * N) }
+                    }
+
 
                     //строительство ТП
-                    if (this.BuildTP && this.Calculate !== 0) {
+                    if (this.BuildTP && this.Calculate !== 0 && this.VoltageClass !== 2) {
                         //console.log(this["BuildTP_radio_" + this.Calculate])
                         x += (Number(this.j.Power.max150[this["BuildTP_radio_" + this.Calculate]]) * N)
                     }
