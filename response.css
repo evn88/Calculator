@@ -58,41 +58,34 @@
         justify-content: space-between;
         width: auto;
     }
-    .left_2,
     .right_2 {
-        margin: 25px 40px 25px 40px;
+        margin-top: -25px;
     }
-    #forth_2 {
+    .forth_2,
+    .forth_2_small {
         width: auto;
-        margin: 0;
+        margin: 25px 40px 25px 40px;
     }
     .index {
         margin-left: 270px;
     }
-    #forth_2 .index p {
+    .forth_2 .index p,
+    .forth_2_small .index p {
         white-space: nowrap;
     }
     .sqrt {
         margin: 15px 0 15px 0;
     }
-    #forth_2 .source {
+    .forth_2 .source,
+    .forth_2_small .source {
         flex-direction: column;
         height: 125px;
         padding-bottom: 22px;
     }
-    #forth_2 .source .index {
+    .forth_2 .source .index,
+    .forth_2_small .source .index {
         width: 102px;
         margin: 2px 0 0 0;
-    }
-    #forth_2 button {
-        padding: 15px;
-        background: #59778c;
-        color: white;
-        font-size: 14px;
-        text-transform: none;
-        font-weight: 500;
-        margin: 25px;
-        border-radius: 5px;
     }
     .block .source {
         margin-bottom: 25px;
@@ -125,10 +118,11 @@
     .inform-page {
         width: auto;
     }
-    #forth {
+    .forth {
         width: auto;
     }
-    #forth_2 {
+    .forth_2,
+    .forth_2_small {
         width: auto;
     }
     .index {
@@ -296,19 +290,20 @@
     .left_2,
     .right_2 {
         width: auto;
-        margin: 25px 0 25px 0;
     }
-    #forth_2 {
+    .forth_2,
+    .forth_2_small {
         width: auto;
-        margin: 0;
+        margin: 25px 0 25px 0;
         background: white;
-        border: #e7eff6 2px solid;
+        border: #e7eff6 3px solid;
     }
     .index {
         margin-left: 0;
         width: auto;
     }
-    #forth_2 .index p {
+    .forth_2 .index p,
+    .forth_2_small .index p {
         white-space: normal;
     }
     .index .sqrt {
@@ -319,7 +314,8 @@
         margin-top: 18px;
         padding: 15px 0 15px 15px;
     }
-    #forth_2 .source {
+    .forth_2 .source,
+    .forth_2_small .source {
         width: auto;
         flex-direction: column;
         height: 125px;
@@ -327,31 +323,38 @@
         margin: 0;
         border: none;
     }
-    #forth_2 select {
+    .forth_2 select,
+    .forth_2_small select {
         font-size: 11px;
     }
-    #forth_2 .long {
+    .forth_2 .long,
+    .forth_2_small .long {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
     }
-    #forth_2 input {
+    .forth_2 input,
+    .forth_2_small input {
         width: 100px;
     }
-    #forth_2 ::-webkit-input-placeholder {
+    .forth_2 ::-webkit-input-placeholder,
+    .forth_2_small ::-webkit-input-placeholder {
         color: black;
         font-size: 14px;
         text-align: center;
     }
-    #forth_2 .source .index {
+    .forth_2 .source .index,
+    .forth_2_small .source .index {
         width: 102px;
         margin: 2px;
     }
-    #forth_2 .btn {
+    .forth_2 .btn,
+    .forth_2_small .btn {
         margin: 25px 15px 25px 15px;
         text-align: center;
     }
-    #forth_2 .btn a {
+    .forth_2 .btn a,
+    .forth_2_small .btn a {
         position: relative;
         width: auto;
         margin: 0 auto;
