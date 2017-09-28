@@ -111,6 +111,9 @@ var app = new Vue({
             this.Ch2__3_1_1 = false
             this.Ch2__3_2_1 = false
         },
+        showRadio: function(arr){
+            //if()
+        },
         result: function(e) {
             if (e) {
                 e += e * 18 / 100 // +18% НДС
