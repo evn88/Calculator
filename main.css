@@ -99,6 +99,11 @@ select {
     vertical-align: bottom;
 }
 
+.errortext {
+    color: red;
+    padding: 5px;
+}
+
 .input .safe {
     padding: 0;
     font-size: 16px;
@@ -300,43 +305,34 @@ p.sourse_bottom {
 .left_2,
 .right_2 {
     width: auto;
+}
+
+.forth_2 {
+    width: 1096px;
+    background: #f2f4f5;
+    border: #59778c 2px solid;
     margin: 40px;
 }
 
+.forth_2 .source {
+    margin: 0 25px 25px 25px;
+    padding: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
-/* #forth_2 {
+
+/* классы для стандартиз. ставки от 2х источников*/
+
+.forth_2_small {
     width: 500px;
     background: #f2f4f5;
     border: #59778c 2px solid;
-    margin-top: 40px;
+    margin: 40px;
 }
 
-#forth_2 .options {
-    text-align: center;
-}
-
-.index {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    width: auto;
-    margin: 0 10px -25px 10px;
-}
-
-#forth_2 .index p {
-    padding: 15px;
-}
-
-.sqrt {
-    margin: 15px 0 15px 15px;
-    width: 30px;
-    height: 20px;
-    text-align: center;
-    background: #59778c;
-    color: white;
-}
-
-#forth_2 .source {
+.forth_2_small .source {
     padding: 25px;
     display: flex;
     flex-direction: column;
@@ -344,105 +340,9 @@ p.sourse_bottom {
     height: 125px;
 }
 
-#forth_2 input {
-    width: 150px;
-    background: white;
-    border: #59778c 1px solid;
-}
-
-#forth_2 ::-webkit-input-placeholder {
-    color: black;
-    font-size: 16px;
-}
-
-#forth_2 .long {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-#forth_2 .left_text {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-}
-
-#forth_2 span {
-    color: black;
-    font-size: 16px;
-    padding: 15px 0 0 10px;
-}
-
-#forth_2 .source .index {
-    margin: 0;
-    width: 350px;
-}
-
-#forth_2 .source .sqrt {
-    width: 40px;
-    height: 20px;
-    padding: 5px;
-    margin-top: 8px;
+.forth_2 .options,
+.forth_2_small .options {
     text-align: center;
-    background: #59778c;
-    color: white;
-}
-
-#forth_2 .btn {
-    margin: 40px 0 40px 25px;
-}
-
-#forth_2 .btn a {
-    padding: 15px 40px 15px 40px;
-    text-decoration: none;
-    color: white;
-    background: #59778c;
-    font-size: 16px;
-    font-weight: 500;
-    border-radius: 5px;
-}
-
-#forth_2 .btn a:hover {
-    background: #678da8;
-}
-
-#forth_2 .source_bottom {
-    padding: 0;
-}
-
-.block {
-    margin: 40px 40px 0 40px;
-    width: auto;
-    background: #f2f4f5;
-    border: #59778c 2px solid;
-}
-
-.block .source {
-    margin-bottom: 25px;
-}
-
-.disabled {
-    color: lightgray
-}
-
-.disabled input {
-    background: #678da8;
-}
-*/
-
-.errortext {
-    color: red;
-    padding: 5px;
-}
-
-#forth_2 {
-    width: 1096px;
-    background: #f2f4f5;
-    border: #59778c 2px solid;
-}
-
-#forth_2 .options {
-    margin-left: 10px;
 }
 
 .index {
@@ -452,7 +352,8 @@ p.sourse_bottom {
     margin-right: 10px;
 }
 
-#forth_2 p {
+.forth_2 p,
+.forth_2_small p {
     padding: 15px;
 }
 
@@ -465,43 +366,41 @@ p.sourse_bottom {
     color: white;
 }
 
-#forth_2 .source {
-    margin: 0 25px 25px 25px;
-    padding: 25px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-#forth_2 input {
+.forth_2 input,
+.forth_2_small input {
     width: 150px;
     background: white;
     border: #59778c 1px solid;
 }
 
-#forth_2 ::-webkit-input-placeholder {
+.forth_2 ::-webkit-input-placeholder,
+.forth_2_small ::-webkit-input-placeholder {
     color: black;
     font-size: 16px;
 }
 
-#forth_2 .long {
+.forth_2 .long,
+.forth_2_small .long {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-#forth_2 span {
+.forth_2 span,
+.forth_2_small span {
     color: black;
     font-size: 16px;
     padding: 15px 0 0 10px;
 }
 
-#forth_2 .source .index {
+.forth_2 .source .index,
+.forth_2_small .source .index {
     margin: 0;
-    width: 350px;
+    width: auto;
 }
 
-#forth_2 .source .sqrt {
+.forth_2 .source .sqrt,
+.forth_2_small .source .sqrt {
     width: 40px;
     height: 20px;
     padding: 5px;
@@ -511,11 +410,13 @@ p.sourse_bottom {
     color: white;
 }
 
-#forth_2 .btn {
+.forth_2 .btn,
+.forth_2_small .btn {
     margin: 40px 0 40px 25px;
 }
 
-#forth_2 .btn a {
+.forth_2 .btn a,
+.forth_2_small .btn a {
     padding: 15px 40px 15px 40px;
     text-decoration: none;
     color: white;
@@ -525,11 +426,13 @@ p.sourse_bottom {
     border-radius: 5px;
 }
 
-#forth_2 .btn a:hover {
+.forth_2 .btn a:hover,
+.forth_2_small .btn a:hover {
     background: #678da8;
 }
 
-#forth_2 .sourse_bottom {
+.forth_2 .sourse_bottom,
+.forth_2_small .sourse_bottom {
     margin-left: 10px;
 }
 
