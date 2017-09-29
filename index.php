@@ -168,7 +168,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                 <p class="options">Параметры для расчета стоимости по стандартизированной ставке</p>
             <div class="index">
                 <p>Индекс изменения сметной стоимости за:</p>
-                <div class="sqrt">3</div>
+                <div class="sqrt">1</div>
                 <p class="quart">квартал</p>
             </div>
             <div class="source">
