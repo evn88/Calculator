@@ -54,10 +54,14 @@ p {
     padding: 0 40px 0 40px;
 }
 
+#first .left {
+    justify-content: space-between;
+}
+
 .left {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     position: relative;
     width: 500px;
 }

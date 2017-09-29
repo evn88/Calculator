@@ -94,18 +94,24 @@ var app = new Vue({
         },
         S1: function() {
             this.resetAllBuilds()
+        },
+        VoltageClass: function() {
+            this.resetAllBuilds()
+        },
+        Calculate: function() {
+            this.resetAllBuilds()
         }
     },
     methods: {
         resetAllBuilds: function() {
-            this.N = 0
-            this.Build = false //необходимо строительство
+            //this.N = 0
+            // this.Build = false //необходимо строительство
             this.BuildTP = false
-            this.BuildTP_radio_1 = 0
-            this.BuildTP_radio_2 = 0
-            this.Calculate = 0 //расчет по power-мощности, standart-стандартизированной
-            this.VoltageClass = 0 //Класс напряжения
-            this.L = 0 //длина линий
+                // this.BuildTP_radio_1 = 0
+                // this.BuildTP_radio_2 = 0
+                //this.Calculate = 0 //расчет по power-мощности, standart-стандартизированной
+                //this.VoltageClass = 0 //Класс напряжения
+                //this.L = 0 //длина линий
 
             this.Ch2_1 = false
             this.Ch2_2 = false
@@ -126,6 +132,7 @@ var app = new Vue({
             this.Ch2__3_2 = false
             this.Ch2__3_1_1 = false
             this.Ch2__3_2_1 = false
+            console.log("reset all builds")
         },
         showRadio: function(arr) {
             //Сбрасываем значения
@@ -163,11 +170,20 @@ var app = new Vue({
                 if (N <= 15) {
                     max = "max15"
                     if (this.Conditions) {
-                        this.Show_Ch2_1 = true //вл 0,4
-                        this.Show_Ch2_3 = true //вл 6-10
-                        this.Show_Ch3_1 = true //кл 0,4
-                        this.Show_Ch3_2 = true //кл 6-10
-                        this.Show_Ch3_1_1 = true //кл 0,4ГНБ
+                        if (this.VoltageClass == 1) {
+                            this.Show_Ch2_1 = true //вл 0,4
+                            this.Show_Ch2_3 = true //вл 6-10
+                            this.Show_Ch3_1 = true //кл 0,4
+                            this.Show_Ch3_2 = true //кл 6-10
+                            this.Show_Ch3_1_1 = true //кл 0,4ГНБ
+                        }
+                        if (this.VoltageClass == 2) {
+                            this.Show_Ch2_1 = false //вл 0,4
+                            this.Show_Ch2_3 = true //вл 6-10
+                            this.Show_Ch3_1 = false //кл 0,4
+                            this.Show_Ch3_2 = true //кл 6-10
+                            this.Show_Ch3_1_1 = false //кл 0,4ГНБ
+                        }
 
                         //прячем строительство ТП если класс 6-10
                         if (this.VoltageClass == 2) { this.Show_BuildTP = false } else { this.Show_BuildTP = true }
@@ -182,27 +198,53 @@ var app = new Vue({
                 // от 16 до 150
                 if (N > 15 && N <= 150) {
                     max = "max150"
-                        //x = N * Number(this.j.C1[max])
-
-                    this.Show_Ch2_1 = true //вл 0,4
-                    this.Show_Ch2_3 = true //вл 6-10
-                    this.Show_Ch3_1 = true //кл 0,4
-                    this.Show_Ch3_2 = true //кл 6-10
-                    this.Show_Ch3_1_1 = true //кл 0,4ГНБ
+                    if (this.VoltageClass == 1) {
+                        this.Show_Ch2_1 = true //вл 0,4
+                        this.Show_Ch2_3 = true //вл 6-10
+                        this.Show_Ch3_1 = true //кл 0,4
+                        this.Show_Ch3_2 = true //кл 6-10
+                        this.Show_Ch3_1_1 = true //кл 0,4ГНБ
+                    }
+                    if (this.VoltageClass == 2) {
+                        this.Show_Ch2_1 = false //вл 0,4
+                        this.Show_Ch2_3 = true //вл 6-10
+                        this.Show_Ch3_1 = false //кл 0,4
+                        this.Show_Ch3_2 = true //кл 6-10
+                        this.Show_Ch3_1_1 = false //кл 0,4ГНБ
+                    }
 
                     //прячем строительство ТП если класс 6-10
                     if (this.VoltageClass == 2) { this.Show_BuildTP = false } else { this.Show_BuildTP = true }
 
                     if (this.Category == 3) { this.showRadio([1, 2, 3, 4, 5, 6]) }
-                    if (this.Category == 2) { this.showRadio([12, 13]) }
+                    if (this.Category == 2) { this.showRadio([9, 10]) }
                 }
 
-                // свыше 150
                 if (N > 150) {
                     max = "max150"
-                        //x = N * Number(this.j.C1[max])
-                        //Уточнить
+                    if (this.VoltageClass == 1) {
+                        this.Show_Ch2_1 = true //вл 0,4
+                        this.Show_Ch2_3 = true //вл 6-10
+                        this.Show_Ch3_1 = true //кл 0,4
+                        this.Show_Ch3_2 = true //кл 6-10
+                        this.Show_Ch3_1_1 = false //кл 0,4ГНБ
+                        this.Show_Ch3_2_1 = true //кл 6-10ГНБ
+                    }
+                    if (this.VoltageClass == 2) {
+                        this.Show_Ch2_1 = false //вл 0,4
+                        this.Show_Ch2_3 = true //вл 6-10
+                        this.Show_Ch3_1 = false //кл 0,4
+                        this.Show_Ch3_2 = true //кл 6-10
+                        this.Show_Ch3_1_1 = false //кл 0,4ГНБ
+                        this.Show_Ch3_2_1 = true //кл 6-10ГНБ
+                    }
 
+
+                    //прячем строительство ТП если класс 6-10
+                    if (this.VoltageClass == 2) { this.Show_BuildTP = false } else { this.Show_BuildTP = true }
+
+                    if (this.Category == 3) { this.showRadio([6, 7, 8, 9, 10, 11, 12, 13, 14]) }
+                    if (this.Category == 2) { this.showRadio([6, 7, 8, 10, 11, 12, 13, 14]) }
                 }
 
                 //для временного присоединения
