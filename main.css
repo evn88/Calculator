@@ -270,7 +270,7 @@ p.sourse_bottom {
 }
 
 .total {
-    background: url("/about/test/bg.svg") no-repeat;
+    background: white url("/about/test/bg.svg") no-repeat;
     background-position: right;
     border: #59778c 1px solid;
     margin-top: 25px;
@@ -329,8 +329,12 @@ p.sourse_bottom {
 
 /* классы для стандартиз. ставки от 2х источников*/
 
+.right_2 .forth_2_small {
+    margin-left: 0;
+}
+
 .forth_2_small {
-    width: 500px;
+    width: 530px;
     background: #f2f4f5;
     border: #59778c 2px solid;
     margin: 40px;
@@ -342,6 +346,7 @@ p.sourse_bottom {
     flex-direction: column;
     justify-content: space-between;
     height: 125px;
+    margin: 0 25px 25px 25px;
 }
 
 .forth_2 .options,
