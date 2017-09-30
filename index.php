@@ -168,12 +168,12 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                 <p class="options">Параметры для расчета стоимости по стандартизированной ставке</p>
             <div class="index">
                 <p>Индекс изменения сметной стоимости за:</p>
-                <div class="sqrt">1</div>
+                <div class="sqrt">{{(j)?j.Z.quarter : ""}}</div>
                 <p class="quart">квартал</p>
             </div>
             <div class="source">
                 <div class="select">
-                    <select class="no_styled">
+                    <select class="no_styled" v-model="test">
                         <option value="0" disabled selected> Выберите тип линии </option>
                         <option value="1">Воздушная линия 0,4кВ</option>
                         <option value="2">Воздушная линия изолированная 0,4кВ</option>
@@ -188,7 +188,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                     <div class="left_text"><input type="text" placeholder="длина"> <span>км</span></div>
                     <div class="index">
                         <p>Индекс</p>
-                        <div class="sqrt">4.95</div>
+                        <div class="sqrt">{{test}}</div>
                     </div>
                 </div>
             </div>

@@ -17,6 +17,7 @@ var app = new Vue({
         Calculate: 0, //расчет по power-мощности, standart-стандартизированной
         VoltageClass: 0, //Класс напряжения
         L: [0], //длина линий
+        test: '0',
 
         Ch2_1: false,
         Ch2_2: false,
