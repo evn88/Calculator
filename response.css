@@ -31,7 +31,7 @@
     }
     #forth {
         margin: 40px;
-        width: 720px;
+        width: auto;
     }
     .options {
         text-align: center;
@@ -60,6 +60,7 @@
     }
     .right_2 {
         margin-top: -25px;
+        margin-left: 40px;
     }
     .forth_2,
     .forth_2_small {
@@ -290,6 +291,9 @@
     .left_2,
     .right_2 {
         width: auto;
+    }
+    .right_2 {
+        margin-left: 0;
     }
     .forth_2,
     .forth_2_small {
