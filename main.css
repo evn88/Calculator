@@ -1,3 +1,7 @@
+[v-cloak] {
+    display: none;
+}
+
 .body {
     position: relative;
     background: #fff;
@@ -419,11 +423,6 @@ p.sourse_bottom {
     color: white;
 }
 
-.forth_2 .btn,
-.forth_2_small .btn {
-    margin: 40px 0 40px 25px;
-}
-
 .forth_2 .btn a,
 .forth_2_small .btn a {
     padding: 15px 40px 15px 40px;
@@ -454,4 +453,33 @@ p.sourse_bottom {
 
 .block .source {
     margin-bottom: 25px;
+}
+
+.btn {
+    color: white;
+    padding: 15px 40px 15px 40px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    margin: 5px 25px 10px 25px;
+}
+
+.btn-add {
+    background: #59778c;
+}
+
+.btn-delete {
+    background: #b42424;
+    margin-left: 0;
+}
+
+.forth_2 .btn-add :hover,
+.forth_2_small .btn-add :hover {
+    background: #678da8;
+}
+
+.forth_2 .btn-delete :hover,
+.forth_2_small .btn-delete :hover {
+    background: #f04e4e;
 }

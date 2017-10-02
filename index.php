@@ -7,8 +7,7 @@ $APPLICATION->SetPageProperty("BG_IMAGE", "/local/templates/voel/i/bg/price.jpg"
 $APPLICATION->SetTitle("Калькулятор технологического присоединения");
 ?>
 
-<div class="wrapper" id="calculate">
-
+<div class="wrapper" id="calculate" v-cloak>
         <!-- вид заявки / категория / мощность -->
         <div id="first">
             <div class="left form-box">
@@ -171,9 +170,9 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                 <div class="sqrt">{{(j)?j.Z.quarter : ""}}</div>
                 <p class="quart">квартал</p>
             </div>
-            <div class="source">
+            <div class="source" v-for="item in Lines_one" :key="item.id">
                 <div class="select">
-                    <select class="no_styled" v-model="test">
+                    <select class="no_styled" v-model="item.select">
                         <option value="0" disabled selected> Выберите тип линии </option>
                         <option value="1">Воздушная линия 0,4кВ</option>
                         <option value="2">Воздушная линия изолированная 0,4кВ</option>
@@ -185,37 +184,18 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                     </select>
                 </div>
                 <div class="long">
-                    <div class="left_text"><input type="text" placeholder="длина"> <span>км</span></div>
+                    <div class="left_text"><input type="text" placeholder="длина" v-model="item.L"> <span>км</span></div>
                     <div class="index">
                         <p>Индекс</p>
-                        <div class="sqrt">{{test}}</div>
+                        <div class="sqrt">{{item.index}}</div>
                     </div>
                 </div>
             </div>
 
-            <div class="source">
-                <div class="select">
-                    <select class="no_styled">
-                        <option value="0" disabled selected> Выберите тип линии </option>
-                        <option value="1">Воздушная линия 0,4кВ</option>
-                        <option value="2">Воздушная линия изолированная 0,4кВ</option>
-                        <option value="3">Воздушная линия 6-10кВ</option>
-                        <option value="4">Воздушная линия изолированная 6-10кВ</option>
-                        <option value="5">Кабельная линия 0,4кВ</option>
-                        <option value="6">Кабельная линия 6-10кВ</option>
-                        <option value="7">Кабельная линия 0,4кВ с приминением ГНБ*</option>
-                    </select>
-                </div>
-                <div class="long">
-                    <div class="left_text"><input type="text" placeholder="длина"> <span>км</span></div>
-                    <div class="index">
-                        <p>Индекс</p>
-                        <div class="sqrt">4.95</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="btn"><a href="#">Добавить линию</a></div>
+
+		    <button type="submit" class="btn btn-add" @click="addLine()">Добавить линию</button>
+		    <button type="submit" class="btn btn-delete" @click="deleteLine()">Удалить линию</button>
+
 
             <p class="sourse_bottom"><b>*ГНБ -</b> Горизонтальное бурение или Горизонтальное направленное бурение — управляемый бестраншейный <br>
                     метод прокладывания подземных коммуникаций, основанный на использовании специальных буровых <br>
@@ -277,6 +257,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                 </div>
             
             <div class="btn"><a href="#">Добавить линию</a></div>
+            <div class="btn btn-delete"><a href="#">Удалить линию</a></div>
 
             <p class="sourse_bottom"><b>*ГНБ -</b> Горизонтальное бурение или Горизонтальное направленное бурение — управляемый бестраншейный <br>
                     метод прокладывания подземных коммуникаций, основанный на использовании специальных буровых <br>
