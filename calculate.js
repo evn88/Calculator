@@ -117,11 +117,9 @@ var app = new Vue({
                 "index": 0,
                 "L": "",
             })
-            console.log("add")
         },
         deleteLine: function() {
             this.Lines_one.pop()
-            console.log("delete")
         },
         resetAllBuilds: function() {
             //this.N = 0
@@ -173,6 +171,14 @@ var app = new Vue({
                 return (Math.round(e * 100) / 100) //округляем результаты
             } else {
                 return 0
+            }
+        },
+        index: function(e) {
+            if (e.select >= '1' && e.select <= '4') {
+                this.Lines_one[e.id].index = this.j.Z.VL
+            }
+            if (e.select >= '5' && e.select <= '8') {
+                this.Lines_one[e.id].index = this.j.Z.KL
             }
         }
     },
