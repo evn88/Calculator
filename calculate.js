@@ -334,16 +334,20 @@ var app = new Vue({
                     if (this.Conditions) {
                         if (this.VoltageClass == 1) {
                             this.Show_Ch2_1 = true //вл 0,4
-                            this.Show_Ch2_3 = true //вл 6-10
-                            this.Show_Ch3_1 = true //кл 0,4
-                            this.Show_Ch3_2 = true //кл 6-10
+                            this.Show_Ch2_2 = true //вл 6-10
+                            this.Show_Ch2_3 = true //кл 0,4
+                            this.Show_Ch2_4 = true //кл 6-10
+                            this.Show_Ch3_1 = true //кл 0,4ГНБ
+                            this.Show_Ch3_2 = true //кл 0,4ГНБ
                             this.Show_Ch3_1_1 = true //кл 0,4ГНБ
                         }
                         if (this.VoltageClass == 2) {
                             this.Show_Ch2_1 = false //вл 0,4
-                            this.Show_Ch2_3 = true //вл 6-10
-                            this.Show_Ch3_1 = false //кл 0,4
-                            this.Show_Ch3_2 = true //кл 6-10
+                            this.Show_Ch2_2 = false //вл 6-10
+                            this.Show_Ch2_3 = true //кл 0,4
+                            this.Show_Ch2_4 = true //кл 6-10
+                            this.Show_Ch3_1 = false //кл 0,4ГНБ
+                            this.Show_Ch3_2 = true //кл 0,4ГНБ
                             this.Show_Ch3_1_1 = false //кл 0,4ГНБ
                         }
 
@@ -362,16 +366,20 @@ var app = new Vue({
                     max = "max150"
                     if (this.VoltageClass == 1) {
                         this.Show_Ch2_1 = true //вл 0,4
-                        this.Show_Ch2_3 = true //вл 6-10
-                        this.Show_Ch3_1 = true //кл 0,4
-                        this.Show_Ch3_2 = true //кл 6-10
+                        this.Show_Ch2_2 = true //вл 6-10
+                        this.Show_Ch2_3 = true //кл 0,4
+                        this.Show_Ch2_4 = true //кл 6-10
+                        this.Show_Ch3_1 = true //кл 0,4ГНБ
+                        this.Show_Ch3_2 = true //кл 0,4ГНБ
                         this.Show_Ch3_1_1 = true //кл 0,4ГНБ
                     }
                     if (this.VoltageClass == 2) {
                         this.Show_Ch2_1 = false //вл 0,4
-                        this.Show_Ch2_3 = true //вл 6-10
-                        this.Show_Ch3_1 = false //кл 0,4
-                        this.Show_Ch3_2 = true //кл 6-10
+                        this.Show_Ch2_2 = false //вл 6-10
+                        this.Show_Ch2_3 = true //кл 0,4
+                        this.Show_Ch2_4 = true //кл 6-10
+                        this.Show_Ch3_1 = false //кл 0,4ГНБ
+                        this.Show_Ch3_2 = true //кл 0,4ГНБ
                         this.Show_Ch3_1_1 = false //кл 0,4ГНБ
                     }
 
@@ -385,20 +393,20 @@ var app = new Vue({
                 if (N > 150) {
                     max = "max150"
                     if (this.VoltageClass == 1) {
-                        this.Show_Ch2_1 = true //вл 0,4
+                        this.Show_Ch2_2 = true //вл 0,4
                         this.Show_Ch2_3 = true //вл 6-10
-                        this.Show_Ch3_1 = true //кл 0,4
-                        this.Show_Ch3_2 = true //кл 6-10
-                        this.Show_Ch3_1_1 = false //кл 0,4ГНБ
+                        this.Show_Ch2_4 = true //кл 0,4
+                        this.Show_Ch3_1 = true //кл 6-10
+                        this.Show_Ch3_2 = true //кл 0,4ГНБ
                         this.Show_Ch3_2_1 = true //кл 6-10ГНБ
                     }
                     if (this.VoltageClass == 2) {
-                        this.Show_Ch2_1 = false //вл 0,4
+                        this.Show_Ch2_2 = false //вл 0,4
                         this.Show_Ch2_3 = true //вл 6-10
-                        this.Show_Ch3_1 = false //кл 0,4
-                        this.Show_Ch3_2 = true //кл 6-10
-                        this.Show_Ch3_1_1 = false //кл 0,4ГНБ
-                        this.Show_Ch3_2_1 = true //кл 6-10ГНБ
+                        this.Show_Ch2_4 = true //кл 0,4
+                        this.Show_Ch3_1 = false //кл 6-10
+                        this.Show_Ch3_2 = true //кл 0,4ГНБ
+                        this.Show_Ch3_2_1 = true //кл 0,4ГНБ
                     }
 
 
