@@ -172,7 +172,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
             </div>
             <div class="source" v-for="item in Lines_one" :key="item.id">
                 <div class="select">
-                    <select class="no_styled" v-model="item.select" v-on:change="index(item)">
+                    <select class="no_styled" v-model="item.select" v-on:change="index(item, 'one')">
                         <option value="0" disabled selected> Выберите тип линии </option>
                         <option value="1" v-if="Show_Ch2_1">Воздушная линия 0,4кВ</option>
                         <option value="2" v-if="Show_Ch2_2">Воздушная линия изолированная 0,4кВ</option>
@@ -194,8 +194,8 @@ $APPLICATION->SetTitle("Калькулятор технологического 
             </div>
 
 
-		    <button type="submit" class="btn btn-add" @click="addLine()">Добавить линию</button>
-		    <button type="submit" class="btn btn-delete" @click="deleteLine()">Удалить линию</button>
+		    <button type="submit" class="btn btn-add" @click="addLine('one')">Добавить линию</button>
+		    <button type="submit" class="btn btn-delete" @click="deleteLine('one')">Удалить линию</button>
 
 
             <p class="sourse_bottom"><b>*ГНБ -</b> Горизонтальное бурение или Горизонтальное направленное бурение — управляемый бестраншейный <br>
@@ -211,55 +211,36 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                 <p class="options">Параметры для расчета стоимости по стандартизированной ставке</p>
             <div class="index">
                 <p>Индекс изменения сметной стоимости за:</p>
-                <div class="sqrt">3</div>
+                <div class="sqrt">{{(j)?j.Z.quarter : ""}}</div>
                 <p class="quart">квартал</p>
             </div>
-            <div class="source">
+            <div class="source" v-for="item in Lines_two" :key="item.id">
                 <div class="select">
-                    <select class="no_styled">
+                    <select class="no_styled" v-model="item.select" v-on:change="index(item, 'two')">
                         <option value="0" disabled selected> Выберите тип линии </option>
-                        <option value="1">Воздушная линия 0,4кВ</option>
-                        <option value="2">Воздушная линия изолированная 0,4кВ</option>
-                        <option value="3">Воздушная линия 6-10кВ</option>
-                        <option value="4">Воздушная линия изолированная 6-10кВ</option>
-                        <option value="5">Кабельная линия 0,4кВ</option>
-                        <option value="6">Кабельная линия 6-10кВ</option>
-                        <option value="7">Кабельная линия 0,4кВ с приминением ГНБ*</option>
+                        <option value="1" v-if="Show_Ch2_1">Воздушная линия 0,4кВ</option>
+                        <option value="2" v-if="Show_Ch2_2">Воздушная линия изолированная 0,4кВ</option>
+                        <option value="3" v-if="Show_Ch2_3">Воздушная линия 6-10кВ</option>
+                        <option value="4" v-if="Show_Ch2_4">Воздушная линия изолированная 6-10кВ</option>
+                        <option value="5" v-if="Show_Ch3_1">Кабельная линия 0,4кВ</option>
+                        <option value="6" v-if="Show_Ch3_2">Кабельная линия 6-10кВ</option>
+                        <option value="7" v-if="Show_Ch3_1_1">Кабельная линия 0,4кВ с приминением ГНБ*</option>
+                        <option value="8" v-if="Show_Ch3_2_1">Кабельная линия 6-10кВ с приминением ГНБ*</option>
                     </select>
                 </div>
                 <div class="long">
-                    <div class="left_text"><input type="number" placeholder="длина"> <span>км</span></div>
+                    <div class="left_text"><input type="number" placeholder="длина" v-model="item.L"> <span>км</span></div>
                     <div class="index">
                         <p>Индекс</p>
-                        <div class="sqrt">4.95</div>
+                        <div class="sqrt">{{item.index}}</div>
                     </div>
                 </div>
             </div>
-            <div class="source">
-                    <div class="select">
-                        <select class="no_styled">
-                            <option value="0" disabled selected> Выберите тип линии </option>
-                            <option value="1">Воздушная линия 0,4кВ</option>
-                            <option value="2">Воздушная линия изолированная 0,4кВ</option>
-                            <option value="3">Воздушная линия 6-10кВ</option>
-                            <option value="4">Воздушная линия изолированная 6-10кВ</option>
-                            <option value="5">Кабельная линия 0,4кВ</option>
-                            <option value="6">Кабельная линия 6-10кВ</option>
-                            <option value="7">Кабельная линия 0,4кВ с приминением ГНБ*</option>
-                        </select>
-                    </div>
-                    <div class="long">
-                        <div class="left_text"><input type="number" placeholder="длина"> <span>км</span></div>
-                        <div class="index">
-                            <p>Индекс</p>
-                            <div class="sqrt">4.95</div>
-                        </div>
-                    </div>
-                </div>
-            
-            <div class="btn"><a href="#">Добавить линию</a></div>
-            <div class="btn btn-delete"><a href="#">Удалить линию</a></div>
 
+
+		    <button type="submit" class="btn btn-add" @click="addLine('two')">Добавить линию</button>
+            <button type="submit" class="btn btn-delete" @click="deleteLine('two')">Удалить линию</button>
+            
             <p class="sourse_bottom"><b>*ГНБ -</b> Горизонтальное бурение или Горизонтальное направленное бурение — управляемый бестраншейный <br>
                     метод прокладывания подземных коммуникаций, основанный на использовании специальных буровых <br>
                     комплексов.</p>

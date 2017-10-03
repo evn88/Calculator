@@ -27,8 +27,13 @@ var app = new Vue({
             "index": 0,
             "L": "",
         }], //Линии
-        Lines_two: [], //Линии
-        test: '0',
+        Lines_two: [{
+            "id": 0,
+            "select": 0,
+            "index": 0,
+            "L": "",
+        }], //Линии
+
 
         Ch2_1: false,
         Ch2_2: false,
@@ -115,16 +120,20 @@ var app = new Vue({
         }
     },
     methods: {
-        addLine: function() {
-            this.Lines_one.push({
-                "id": this.Lines_one.length,
-                "select": 0,
-                "index": 0,
-                "L": "",
-            })
+        addLine: function(lineNumber) {
+            if (lineNumber == 'one' || lineNumber == 'two') {
+                this["Lines_" + lineNumber].push({
+                    "id": this["Lines_" + lineNumber].length,
+                    "select": 0,
+                    "index": 0,
+                    "L": "",
+                })
+            }
         },
-        deleteLine: function() {
-            this.Lines_one.pop()
+        deleteLine: function(lineNumber) {
+            if (lineNumber == 'one' || lineNumber == 'two') {
+                this["Lines_" + lineNumber].pop()
+            }
         },
         resetAllBuilds: function() {
             //this.N = 0
@@ -200,12 +209,14 @@ var app = new Vue({
                 return 0
             }
         },
-        index: function(e) {
-            if (e.select >= '1' && e.select <= '4') {
-                this.Lines_one[e.id].index = this.j.Z.VL
-            }
-            if (e.select >= '5' && e.select <= '8') {
-                this.Lines_one[e.id].index = this.j.Z.KL
+        index: function(e, lineNumber) {
+            if (lineNumber == 'one' || lineNumber == 'two') {
+                if (e.select >= '1' && e.select <= '4') {
+                    this["Lines_" + lineNumber][e.id].index = this.j.Z.VL
+                }
+                if (e.select >= '5' && e.select <= '8') {
+                    this["Lines_" + lineNumber][e.id].index = this.j.Z.KL
+                }
             }
         }
     },
@@ -346,18 +357,35 @@ var app = new Vue({
             if (this.j && this.N !== 0) {
                 var y = 0
                 var N = Number(this.N)
-                var max //= "max15"
+                var max = "max150"
+                var cmax = "max15"
 
+                //меньше 15 без строительства
                 if (N < 15 && !this.Conditions && N) {
                     return 550
                 }
 
-                y = N * Number(this.j.C1[max])
+                //для временного присоединения
+                if (this.S1 == 2) {
+                    this.Conditions == false
+                    this.Build == false
+                }
+
+                //для любого присоединения
+                if (N > 15) {
+                    cmax = "max150"
+                }
+                if (N <= 15) {
+                    cmax = "max15"
+                }
+
+                //расчетная часть без строительства
+                y = N * Number(this.j.C1[cmax])
 
                 //Строительство
                 if (this.Build && this.Calculate == 2) {
                     if (N <= 15) {
-                        max = "max15"
+                        max = "max150"
                         if (this.Conditions) {
                             if (this.VoltageClass == 1) {
                                 this.showCheckbox([21, 22, 23, 24, 31, 32, 311])
@@ -394,14 +422,13 @@ var app = new Vue({
                     }
 
                     if (N > 150) {
-                        max = "max150"
+                        max = "min150"
                         if (this.VoltageClass == 1) {
                             this.showCheckbox([22, 23, 24, 31, 32, 321])
                         }
                         if (this.VoltageClass == 2) {
                             this.showCheckbox([23, 24, 32, 321])
                         }
-
 
                         //прячем строительство ТП если класс 6-10
                         if (this.VoltageClass == 2) { this.Show_BuildTP = false } else { this.Show_BuildTP = true }
@@ -411,45 +438,39 @@ var app = new Vue({
                     }
 
 
-
-                    var LinesResult = 0
                     this.Lines_one.forEach(function(e) {
                         if (e.L && e.L !== "0" && e.select !== "0") {
                             //первый источник
-                            y += (Number(this.j.Standart.max150.C2_1) * N)
-
-                            //второй источник
-                            if (this.Category == 2) {
-
-                            }
-                            console.log(LinesResult += Number(e.L))
+                            console.log(e.select)
+                            if (e.select == 1) { y += (Number(this.j.Standart[max].C2_1) * e.L * e.index) }
+                            if (e.select == 2) { y += (Number(this.j.Standart[max].C2_2) * e.L * e.index) }
+                            if (e.select == 3) { y += (Number(this.j.Standart[max].C2_3) * e.L * e.index) }
+                            if (e.select == 4) { y += (Number(this.j.Standart[max].C2_4) * e.L * e.index) }
+                            if (e.select == 5) { y += (Number(this.j.Standart[max].C3_1) * e.L * e.index) }
+                            if (e.select == 6) { y += (Number(this.j.Standart[max].C3_2) * e.L * e.index) }
+                            if (e.select == 7) { y += (Number(this.j.Standart[max].C3_1_1) * e.L * e.index) }
+                            if (e.select == 8) { y += (Number(this.j.Standart[max].C3_2_1) * e.L * e.index) }
                         }
                     }, this);
 
-                    //первый источник
-                    /*if (this.Ch2_1 && this.Show_Ch2_1) { y += (Number(this.j.Standart.max150.C2_1) * N) }
-                    if (this.Ch2_2 && this.Show_Ch2_2) { y += (Number(this.j.Standart.max150.C2_2) * N) }
+                    this.Lines_two.forEach(function(e) {
+                        if (e.L && e.L !== "0" && e.select !== "0" && this.Category == 2) {
+                            //первый источник
+                            console.log(e.select)
+                            if (e.select == 1) { y += (Number(this.j.Standart[max].C2_1) * e.L * e.index) }
+                            if (e.select == 2) { y += (Number(this.j.Standart[max].C2_2) * e.L * e.index) }
+                            if (e.select == 3) { y += (Number(this.j.Standart[max].C2_3) * e.L * e.index) }
+                            if (e.select == 4) { y += (Number(this.j.Standart[max].C2_4) * e.L * e.index) }
+                            if (e.select == 5) { y += (Number(this.j.Standart[max].C3_1) * e.L * e.index) }
+                            if (e.select == 6) { y += (Number(this.j.Standart[max].C3_2) * e.L * e.index) }
+                            if (e.select == 7) { y += (Number(this.j.Standart[max].C3_1_1) * e.L * e.index) }
+                            if (e.select == 8) { y += (Number(this.j.Standart[max].C3_2_1) * e.L * e.index) }
+                        }
+                    }, this);
 
-                    if (this.Ch3_1 && this.Show_Ch3_1) { y += (Number(this.j.Standart.max150.C3_1) * N) }
-                    if (this.Ch3_2 && this.Show_Ch3_2) { y += (Number(this.j.Standart.max150.C3_2) * N) }
-                    if (this.Ch3_1_1 && this.Show_Ch3_1_1) { y += (Number(this.j.Standart.max150.C3_1_1) * N) }
-                    if (this.Ch3_2_1 && this.Show_Ch3_2_1) { y += (Number(this.j.Standart.max150.C3_2_1) * N) }
-
-                    if (this.Category == 2) {
-                        //второй источник
-                        if (this.Ch2__2_1 && this.Show_Ch2_1) { y += (Number(this.j.Standart.max150.C2_1) * N) }
-                        if (this.Ch2__2_2 && this.Show_Ch2_2) { y += (Number(this.j.Standart.max150.C2_2) * N) }
-
-                        if (this.Ch2__3_1 && this.Show_Ch3_1) { y += (Number(this.j.Standart.max150.C3_1) * N) }
-                        if (this.Ch2__3_2 && this.Show_Ch3_2) { y += (Number(this.j.Standart.max150.C3_2) * N) }
-                        if (this.Ch2__3_1_1 && this.Show_Ch3_1_1) { y += (Number(this.j.Standart.max150.C3_1_1) * N) }
-                        if (this.Ch2__3_2_1 && this.Show_Ch3_2_1) { y += (Number(this.j.Standart.max150.C3_2_1) * N) }
-                    }
-*/
 
                     //строительство ТП
                     if (this.BuildTP && this.Calculate !== 0 && this.VoltageClass !== 2) {
-                        //console.log(this["BuildTP_radio_" + this.Calculate])
                         y += (Number(this.j.Standart[max][this["BuildTP_radio_" + this.Calculate]]) * N)
                     }
                 }
@@ -461,6 +482,7 @@ var app = new Vue({
                 return 0
             }
         },
+
         isNValid: function() {
             return (/\d{5}/).test(this.N)
         }
