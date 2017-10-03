@@ -62,7 +62,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
 
         <!-- класс напряжения / строительство / расчет по -->
         <div id="third">
-            <div id="build" v-show="Conditions || S1 == 1 && N>15">
+            <div id="build" v-show="Conditions && S1 == 1 || S1 == 1 && N>15">
                 <div class="check">
                     <p>
                         <label>
@@ -89,7 +89,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
         </div>
 
         <!-- по мощности -->
-        <div id="forth" v-show="Conditions && VoltageClass !==0 && Build && Calculate == 1 || S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 1">
+        <div id="forth" v-show="Conditions && VoltageClass !==0 && Build && Calculate == 1 && S1 == 1 || S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 1">
             <p class="options">Параметры для расчета стоимости по ставке за максимальную мощность</p>
             <div class="wrap">
                 <div class="source">
