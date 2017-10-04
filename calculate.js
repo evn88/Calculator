@@ -34,7 +34,6 @@ var app = new Vue({
             "L": "",
         }], //Линии
 
-
         Ch2_1: false,
         Ch2_2: false,
         Ch2_3: false,
@@ -136,14 +135,7 @@ var app = new Vue({
             }
         },
         resetAllBuilds: function() {
-            //this.N = 0
-            // this.Build = false //необходимо строительство
             this.BuildTP = false
-                // this.BuildTP_radio_1 = 0
-                // this.BuildTP_radio_2 = 0
-                //this.Calculate = 0 //расчет по power-мощности, standart-стандартизированной
-                //this.VoltageClass = 0 //Класс напряжения
-                //this.L = 0 //длина линий
 
             this.Ch2_1 = false
             this.Ch2_2 = false
@@ -334,12 +326,10 @@ var app = new Vue({
                         if (this.Ch2__3_2_1 && this.Show_Ch3_2_1) { x += (Number(this.j.Power[max].Cm3_2_1) * N) }
                     }
 
-
                     //строительство ТП
                     if (this.BuildTP && this.Calculate !== 0 && this.VoltageClass !== 2) {
                         x += (Number(this.j.Power[max][this["BuildTP_radio_" + this.Calculate]]) * N)
                     }
-
                 }
 
                 //если переключились на стандартизированную ставку то обнуляем мощность
@@ -437,7 +427,6 @@ var app = new Vue({
                         if (this.Category == 2) { this.showRadio([6, 7, 8, 10, 11, 12, 13, 14]) }
                     }
 
-
                     this.Lines_one.forEach(function(e) {
                         if (e.L && e.L !== "0" && e.select !== "0") {
                             //первый источник
@@ -468,7 +457,6 @@ var app = new Vue({
                         }
                     }, this);
 
-
                     //строительство ТП
                     if (this.BuildTP && this.Calculate !== 0 && this.VoltageClass !== 2) {
                         y += (Number(this.j.Standart[max][this["BuildTP_radio_" + this.Calculate]]) * N)
@@ -490,7 +478,6 @@ var app = new Vue({
     },
     mounted: function() {
         var self = this
-
         this.$nextTick(function() {
             // Код, который будет запущен только после
             // отображения всех представлений
