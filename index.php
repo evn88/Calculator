@@ -358,7 +358,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
     <div class="forth_2_wrap">
         <div class="left_2">
             <div class="forth_2" :class="{forth_2_small:Category==2}"
-                 v-show="Conditions && VoltageClass !==0 && Build && Calculate == 2 || S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 2">
+                 v-show="Conditions && VoltageClass !==0 && Build && Calculate == 2 && S1 == 1 || S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 2">
                 <p class="options">Параметры для расчета стоимости по стандартизированной ставке</p>
                 <div class="index">
                     <p>Индекс изменения сметной стоимости за:</p>
@@ -444,7 +444,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
         </div>
     </div>
     <div class="block"
-         v-show="Conditions && VoltageClass !==0  && Build && Calculate == 2 ||
+         v-show="Conditions && VoltageClass !==0  && Build && Calculate == 2 && S1 == 1 ||
                     S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 2">
         <div class="source" v-show="Show_BuildTP">
             <p class="in_2 check">

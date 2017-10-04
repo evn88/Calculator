@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c48818d6-22fe-4df3-a3a5-a4176506ed24" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calculate.js" afterPath="$PROJECT_DIR$/calculate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-    </list>
+    <list default="true" id="c48818d6-22fe-4df3-a3a5-a4176506ed24" name="Default" comment="" />
     <ignored path="test.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -179,12 +176,12 @@
       <workItem from="1505118611499" duration="39000" />
       <workItem from="1505121383991" duration="1396000" />
       <workItem from="1505209423903" duration="97000" />
-      <workItem from="1507110770499" duration="1134000" />
+      <workItem from="1507110770499" duration="1510000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18871000" />
+    <option name="totallyTimeSpent" value="19247000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
