@@ -389,8 +389,10 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-add" @click="addLine('one')">Добавить линию</button>
-                <button type="submit" class="btn btn-delete" @click="deleteLine('one')">Удалить линию</button>
+                <div class="wrap_2">
+                    <button type="button" class="btn-add" @click="addLine('one')">Добавить линию</button>
+                    <button type="button" class="btn-delete" @click="deleteLine('one')">Удалить линию</button>
+                </div>
 
                 <p class="sourse_bottom"><b>*ГНБ -</b> Горизонтальное бурение или Горизонтальное направленное бурение —
                     управляемый бестраншейный <br>
@@ -433,8 +435,10 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-add" @click="addLine('two')">Добавить линию</button>
-                <button type="submit" class="btn btn-delete" @click="deleteLine('two')">Удалить линию</button>
+                <div class="wrap_2">
+                    <button type="button" class="btn-add" @click="addLine('two')" @mouseenter="hover = true" @mouseleave="hover = false" :class="hover ? 'btn-blue' : ''">Добавить линию</button>
+                    <button type="button" class="btn-delete" @click="deleteLine('two')">Удалить линию</button>
+                </div>
 
                 <p class="sourse_bottom"><b>*ГНБ -</b> Горизонтальное бурение или Горизонтальное направленное бурение —
                     управляемый бестраншейный <br>

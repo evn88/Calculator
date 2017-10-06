@@ -423,22 +423,6 @@ p.sourse_bottom {
     color: white;
 }
 
-.forth_2 .btn a,
-.forth_2_small .btn a {
-    padding: 15px 40px 15px 40px;
-    text-decoration: none;
-    color: white;
-    background: #59778c;
-    font-size: 16px;
-    font-weight: 500;
-    border-radius: 5px;
-}
-
-.forth_2 .btn a:hover,
-.forth_2_small .btn a:hover {
-    background: #678da8;
-}
-
 .forth_2 .sourse_bottom,
 .forth_2_small .sourse_bottom {
     margin-left: 10px;
@@ -455,31 +439,28 @@ p.sourse_bottom {
     margin-bottom: 25px;
 }
 
-.btn {
-    color: white;
-    padding: 15px 40px 15px 40px;
+.wrap_2 button {
     text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: bold;
     border-radius: 5px;
     margin: 5px 25px 10px 25px;
+    width: 210px;
 }
 
-.btn-add {
+.wrap_2 .btn-add {
     background: #59778c;
 }
 
-.btn-delete {
+.wrap_2 .btn-delete {
     background: #b42424;
     margin-left: 0;
 }
 
-.forth_2 .btn-add :hover,
-.forth_2_small .btn-add :hover {
-    background: #678da8;
+button .btn-blue {
+    background: #0a1f2e;
 }
 
-.forth_2 .btn-delete :hover,
-.forth_2_small .btn-delete :hover {
+button .btn-red {
     background: #f04e4e;
 }

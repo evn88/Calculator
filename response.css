@@ -88,18 +88,17 @@
         width: 102px;
         margin: 2px 0 0 0;
     }
+    .wrap_2 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
     .block .source {
         margin-bottom: 25px;
     }
     #fifth {
         margin: 25px 40px 0 40px;
         width: 800px;
-    }
-    #fifth button {
-        width: 724px;
-        border-radius: 5px;
-        font-size: 16px;
-        text-transform: none;
     }
     .result {
         width: 722px;
@@ -352,20 +351,21 @@
         width: 102px;
         margin: 2px;
     }
-    .forth_2 .btn,
-    .forth_2_small .btn {
-        margin: 25px 15px 25px 15px;
-        text-align: center;
+    .wrap_2 {
+        padding: 0 15px 0 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
-    .forth_2 .btn a,
-    .forth_2_small .btn a {
-        position: relative;
-        width: auto;
-        margin: 0 auto;
+    .wrap_2 button {
+        width: 250px;
+    }
+    .wrap_2 .btn-add {
+        margin: 0 0 15px 0;
     }
     p .source_bottom {
         padding: 0;
-        margin: 0;
+        margin-left: 0;
     }
     .block {
         width: auto;

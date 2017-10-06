@@ -33,6 +33,7 @@ var app = new Vue({
             "index": 0,
             "L": "",
         }], //Линии
+        hover: false,
 
         Ch2_1: false,
         Ch2_2: false,
