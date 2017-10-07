@@ -384,12 +384,10 @@ p.sourse_bottom {
     width: 150px;
     background: white;
     border: #59778c 1px solid;
-}
-
-.forth_2 ::-webkit-input-placeholder,
-.forth_2_small ::-webkit-input-placeholder {
     color: black;
     font-size: 16px;
+    padding: 10px;
+    margin-top: 2px;
 }
 
 .forth_2 .long,
@@ -404,6 +402,7 @@ p.sourse_bottom {
     color: black;
     font-size: 16px;
     padding: 15px 0 0 10px;
+    margin-top: 2px;
 }
 
 .forth_2 .source .index,
@@ -437,6 +436,15 @@ p.sourse_bottom {
 
 .block .source {
     margin-bottom: 25px;
+}
+
+.block .sqrt {
+    float: right;
+    margin-top: -1px;
+    background: white;
+    color: #59778c;
+    padding: 3px;
+    font-weight: bold;
 }
 
 .wrap_2 button {

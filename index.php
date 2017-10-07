@@ -454,7 +454,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
             <p class="in_2 check">
                 <label>
                     <input type="checkbox" value="check" v-model="BuildTP">
-                    <span class="jq-checkbox" :class="{ checked: BuildTP }"></span> Строительство ТП <span class="">{{(j)?j.Z.TP : ""}}</span>
+                    <span class="jq-checkbox" :class="{ checked: BuildTP }"></span> Строительство ТП <span class="sqrt">{{(j)?j.Z.TP : ""}}</span>
                 </label>
             </p>
             <div class="inner_wrap" v-show="BuildTP">
