@@ -237,8 +237,12 @@ span .jd-radio {
 }
 
 p.sourse_bottom {
-    margin: 0 25px 25px 25px;
+    margin: 0 10px 10px 10px;
     text-align: justify;
+}
+
+#forth p.sourse_bottom {
+    margin: 0 25px 25px 25px;
 }
 
 .source .in_2 {
@@ -337,7 +341,7 @@ p.sourse_bottom {
 }
 
 .forth_2_small {
-    width: 530px;
+    width: 526px;
     background: #f2f4f5;
     border: #59778c 2px solid;
     margin: 40px;
@@ -424,6 +428,11 @@ p.sourse_bottom {
 .forth_2 .sourse_bottom,
 .forth_2_small .sourse_bottom {
     margin-left: 10px;
+}
+
+.forth_2_small .wrap_2 {
+    display: flex;
+    justify-content: space-between;
 }
 
 .block {

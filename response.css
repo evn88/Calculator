@@ -42,9 +42,12 @@
                 justify-content: space-between;
                 margin: 0 10px 20px 10px;
             }
+            .inner_wrap p {
+                padding-top: 15px;
+            }
             #forth .left {
                 height: auto;
-                margin-top: 10px;
+                margin-top: 0;
             }
             .inner_wrap .right {
                 margin-top: 0;
@@ -98,13 +101,14 @@
             }
             #fifth {
                 margin: 25px 40px 0 40px;
-                width: 800px;
+                width: auto;
             }
             .result {
-                width: 722px;
+                width: auto;
             }
             .total {
-                background-position: right 150%;
+                background-size: cover;
+                background-position: 350px;
             }
             .total .score {
                 color: white;
@@ -262,7 +266,7 @@
                 padding-left: 20px;
             }
             .inner_wrap {
-                margin: 15px 15px;
+                margin: 0 15px 15px 15px;
             }
             #forth .left {
                 width: auto;
@@ -278,6 +282,9 @@
             }
             #forth .right {
                 width: auto;
+            }
+            #forth p.sourse_bottom {
+                margin: 0 15px 25px 15px;
             }
             .inner_wrap p {
                 font-size: 13px;
@@ -383,7 +390,7 @@
                 margin: 0 15px 0 15px;
             }
             .block .in_2 {
-                padding-left: 0px;
+                padding-left: 10px;
             }
             #fifth {
                 margin: 0 15px 0 15px;
