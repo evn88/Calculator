@@ -156,9 +156,30 @@
             }
         }
         
-        @media screen and (max-width: 700px) {
+        @media screen and (max-width: 760px) {
+            .total {
+                background-position: 330px;
+                background-size: cover;
+            }
+        }
+        
+        @media screen and (max-width: 720px) {
             .total {
                 background-position: 300px;
+                background-size: cover;
+            }
+        }
+        
+        @media screen and (max-width: 700px) {
+            .total {
+                background-position: 280px;
+                background-size: cover;
+            }
+        }
+        
+        @media screen and (max-width: 656px) {
+            .total {
+                background-position: 260px;
                 background-size: cover;
             }
         }
@@ -170,9 +191,9 @@
             }
         }
         
-        @media screen and (max-width: 620px) {
+        @media screen and (max-width: 650px) {
             .total {
-                background-position: 250px;
+                background-position: 230px;
                 background-size: cover;
             }
         }
