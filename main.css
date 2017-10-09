@@ -234,7 +234,6 @@ span .jd-radio {
 
 .inner_wrap p {
     color: black;
-    padding-top: 10px;
 }
 
 p.sourse_bottom {
@@ -438,13 +437,31 @@ p.sourse_bottom {
     margin-bottom: 25px;
 }
 
+.block .line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.block .line .inLine {
+    margin-top: 2px;
+}
+
+.block .indx {
+    position: relative;
+    display: inline-block;
+    color: white;
+    margin: 0;
+}
+
 .block .sqrt {
-    float: right;
-    margin-top: -1px;
+    position: relative;
+    display: inline-block;
     background: white;
     color: #59778c;
     padding: 3px;
     font-weight: bold;
+    margin: 0 0 0 10px;
 }
 
 .wrap_2 button {

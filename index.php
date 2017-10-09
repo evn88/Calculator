@@ -451,12 +451,16 @@ $APPLICATION->SetTitle("Калькулятор технологического 
          v-show="Conditions && VoltageClass !==0  && Build && Calculate == 2 && S1 == 1 ||
                     S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 2">
         <div class="source" v-show="Show_BuildTP">
-            <p class="in_2 check">
+            <div class="in_2 check">
                 <label>
-                    <input type="checkbox" value="check" v-model="BuildTP">
-                    <span class="jq-checkbox" :class="{ checked: BuildTP }"></span> Строительство ТП <span class="sqrt">{{(j)?j.Z.TP : ""}}</span>
+                    <div class="line">
+                        <div class="inLine">
+                        <input type="checkbox" value="check" v-model="BuildTP">
+                        <span class="jq-checkbox" :class="{ checked: BuildTP }"></span> Строительство ТП </div>
+                        <div class="indx">Индекс<span class="sqrt">{{(j)?j.Z.TP : ""}}</span></div>
+                    </div>
                 </label>
-            </p>
+            </div>
             <div class="inner_wrap" v-show="BuildTP">
                 <div class="left">
                     <p v-show="radio1">
@@ -563,6 +567,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
             </div>
         </div>
     </div>
+    
 
     <!-- Расчет -->
     <div id="fifth">
