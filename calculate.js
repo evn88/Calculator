@@ -223,7 +223,7 @@ var app = new Vue({
                 var cmax = "max15"
 
                 //меньше 15 без строительства
-                if (N < 15 && !this.Conditions && N) {
+                if (N <= 15 && !this.Conditions && N) {
                     return 550
                 }
 
