@@ -47,7 +47,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
 
     <!-- при условиях -->
     <div id="second">
-        <div class="check" v-if="N<=15 && S1 == 1 && S1!==0 && Category!==0">
+        <div class="check" v-if="N<=15 && S1 == 1 && S1!==0 && Category==3">
             <p>
                 <label>
                     <input type="checkbox" value="check" v-model.lazy="Conditions" key="Conditions-checkbox">
@@ -74,7 +74,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
 
     <!-- класс напряжения / строительство / расчет по -->
     <div id="third">
-        <div id="build" v-show="Conditions && S1 == 1 || S1 == 1 && N>15">
+        <div id="build" v-show="Conditions && S1 == 1 || S1 == 1 && N>15 || S1 == 1 && N<=15 && Category==2">
             <div class="check">
                 <p>
                     <label>
@@ -102,7 +102,9 @@ $APPLICATION->SetTitle("Калькулятор технологического 
 
     <!-- по мощности -->
     <div id="forth"
-         v-show="Conditions && VoltageClass !==0 && Build && Calculate == 1 && S1 == 1 || S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 1">
+         v-show="Conditions && VoltageClass !==0 && Build && Calculate == 1 && S1 == 1 || 
+         S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 1 || 
+         S1 == 1 && N<=15 && Category==2 && VoltageClass !==0 && Build && Calculate == 1">
         <p class="options">Параметры для расчета стоимости по ставке за максимальную мощность</p>
         <div class="wrap">
             <div class="source">
@@ -358,7 +360,9 @@ $APPLICATION->SetTitle("Калькулятор технологического 
     <div class="forth_2_wrap">
         <div class="left_2">
             <div class="forth_2" :class="{forth_2_small:Category==2}"
-                 v-show="Conditions && VoltageClass !==0 && Build && Calculate == 2 && S1 == 1 || S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 2">
+                 v-show="Conditions && VoltageClass !==0 && Build && Calculate == 2 && S1 == 1 || 
+                 S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 2 || 
+                 S1 == 1 && N<=15 && Category==2 && VoltageClass !==0 && Build && Calculate == 2">
                 <p class="options">Параметры для расчета стоимости по стандартизированной ставке</p>
                 <div class="index">
                     <p>Индекс изменения сметной стоимости за:</p>
@@ -404,7 +408,8 @@ $APPLICATION->SetTitle("Калькулятор технологического 
         <div class="right_2" v-show="Category == 2">
             <div class="forth_2_small"
                  v-show="Conditions && VoltageClass !==0 && Build && Calculate == 2 ||
-                    S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 2">
+                    S1 == 1 && N>15 && VoltageClass !==0 && Build && Calculate == 2 || 
+                    S1 == 1 && N<=15 && Category==2 && VoltageClass !==0 && Build && Calculate == 2">
                 <p class="options">Параметры для расчета стоимости по стандартизированной ставке</p>
                 <div class="index">
                     <p>Индекс изменения сметной стоимости за:</p>
