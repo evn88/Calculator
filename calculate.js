@@ -221,10 +221,12 @@ var app = new Vue({
                 var N = Number(this.N)
                 var max = "max150"
                 var cmax = "max15"
-
+                
                 //меньше 15 без строительства
                 if (N <= 15 && !this.Conditions && N) {
-                    return 550
+                    if (this.Category == 3 || this.Category == 0){
+                        return 550
+                    }
                 }
 
                 //для временного присоединения
@@ -250,7 +252,7 @@ var app = new Vue({
                     // до 15
                     if (N <= 15) {
                         max = "max150"
-                        if (this.Conditions) {
+                        if (this.Conditions || this.Category !== 2) {
                             if (this.VoltageClass == 1) {
                                 this.showCheckbox([21, 23, 31, 32, 311])
                             }
@@ -352,8 +354,10 @@ var app = new Vue({
                 var cmax = "max15"
 
                 //меньше 15 без строительства
-                if (N < 15 && !this.Conditions && N) {
-                    return 550
+                if (N < 15 && !this.Conditions && N && this.Category !== 2) {
+                    if (this.Category == 3 || this.Category == 0){
+                        return 550
+                    }
                 }
 
                 //для временного присоединения
@@ -377,7 +381,7 @@ var app = new Vue({
                 if (this.Build && this.Calculate == 2) {
                     if (N <= 15) {
                         max = "max150"
-                        if (this.Conditions) {
+                        if (this.Conditions || this.Category !== 2) {
                             if (this.VoltageClass == 1) {
                                 this.showCheckbox([21, 22, 23, 24, 31, 32, 311])
                             }
