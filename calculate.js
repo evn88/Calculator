@@ -171,6 +171,7 @@ var app = new Vue({
             }
         },
         showCheckbox: function(arr) {
+            console.log(arr)
             if (Array.isArray(arr) && arr.length > 0) {
                 this.Show_Ch2_1 = false
                 this.Show_Ch2_2 = false
@@ -182,7 +183,6 @@ var app = new Vue({
                 this.Show_Ch3_2_1 = false
 
                 arr.forEach(function(element, i) {
-                    console.log(element == 21)
                     if (element === 21) { this.Show_Ch2_1 = true }
                     if (element === 22) { this.Show_Ch2_2 = true }
                     if (element === 23) { this.Show_Ch2_3 = true }
@@ -221,7 +221,7 @@ var app = new Vue({
                 var N = Number(this.N)
                 var max = "max150"
                 var cmax = "max15"
-                
+
                 //меньше 15 без строительства
                 if (N <= 15 && !this.Conditions && N) {
                     if (this.Category == 3 || this.Category == 0){
@@ -436,6 +436,15 @@ var app = new Vue({
                         if (e.L && e.L !== "0" && e.select !== "0") {
                             //первый источник
                             console.log(e.select)
+                            console.log(Number(this.j.Standart[max].C2_1))
+                            console.log(Number(this.j.Standart[max].C2_2))
+                            console.log(Number(this.j.Standart[max].C2_3))
+                            console.log(Number(this.j.Standart[max].C2_4))
+                            console.log(Number(this.j.Standart[max].C3_1))
+                            console.log(Number(this.j.Standart[max].C3_2))
+                            console.log(Number(this.j.Standart[max].C3_1_1))
+                            console.log(Number(this.j.Standart[max].C3_2_1))
+
                             if (e.select == 1) { y += (Number(this.j.Standart[max].C2_1) * e.L * e.index) }
                             if (e.select == 2) { y += (Number(this.j.Standart[max].C2_2) * e.L * e.index) }
                             if (e.select == 3) { y += (Number(this.j.Standart[max].C2_3) * e.L * e.index) }
