@@ -157,7 +157,6 @@ var app = new Vue({
             this.Ch2__3_2 = false
             this.Ch2__3_1_1 = false
             this.Ch2__3_2_1 = false
-            console.log("reset all builds")
         },
         showRadio: function(arr) {
             //Сбрасываем значения
@@ -171,7 +170,6 @@ var app = new Vue({
             }
         },
         showCheckbox: function(arr) {
-            console.log(arr)
             if (Array.isArray(arr) && arr.length > 0) {
                 this.Show_Ch2_1 = false
                 this.Show_Ch2_2 = false
@@ -418,6 +416,8 @@ var app = new Vue({
 
                     if (N > 150) {
                         max = "min150"
+                        console.log("21: ", this.j.Standart.min150.C2_1)
+                        console.log("22: ", this.j.Standart.min150.C2_2)
                         if (this.VoltageClass == 1) {
                             this.showCheckbox([22, 23, 24, 31, 32, 321])
                         }
@@ -435,15 +435,19 @@ var app = new Vue({
                     this.Lines_one.forEach(function(e) {
                         if (e.L && e.L !== "0" && e.select !== "0") {
                             //первый источник
-                            console.log(e.select)
-                            console.log(Number(this.j.Standart[max].C2_1))
-                            console.log(Number(this.j.Standart[max].C2_2))
-                            console.log(Number(this.j.Standart[max].C2_3))
-                            console.log(Number(this.j.Standart[max].C2_4))
-                            console.log(Number(this.j.Standart[max].C3_1))
-                            console.log(Number(this.j.Standart[max].C3_2))
-                            console.log(Number(this.j.Standart[max].C3_1_1))
-                            console.log(Number(this.j.Standart[max].C3_2_1))
+                            
+                            console.log("max = ", max)
+                            console.log("----------------------------")
+                            console.log("arr: ", this.j.Standart[max] )
+                            console.log("----------------------------")
+                            console.log("C21: ", Number(this.j.Standart[max].C2_1))
+                            console.log("C22: ", Number(this.j.Standart[max].C2_2))
+                            console.log("C23: ", Number(this.j.Standart[max].C2_3))
+                            console.log("C24: ", Number(this.j.Standart[max].C2_4))
+                            console.log("C31: ", Number(this.j.Standart[max].C3_1))
+                            console.log("C32: ", Number(this.j.Standart[max].C3_2))
+                            console.log("C311: ", Number(this.j.Standart[max].C3_1_1))
+                            console.log("C321: ", Number(this.j.Standart[max].C3_2_1))
 
                             if (e.select == 1) { y += (Number(this.j.Standart[max].C2_1) * e.L * e.index) }
                             if (e.select == 2) { y += (Number(this.j.Standart[max].C2_2) * e.L * e.index) }
