@@ -40,7 +40,8 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                margin: 0 10px 20px 10px;
+                margin: 0 10px 15px 10px;
+            
             }
             .inner_wrap p {
                 padding-top: 15px;
