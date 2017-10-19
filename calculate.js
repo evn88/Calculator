@@ -435,19 +435,6 @@ var app = new Vue({
                     this.Lines_one.forEach(function(e) {
                         if (e.L && e.L !== "0" && e.select !== "0") {
                             //первый источник
-                            
-                            console.log("max = ", max)
-                            console.log("----------------------------")
-                            console.log("arr: ", this.j.Standart[max] )
-                            console.log("----------------------------")
-                            console.log("C21: ", Number(this.j.Standart[max].C2_1))
-                            console.log("C22: ", Number(this.j.Standart[max].C2_2))
-                            console.log("C23: ", Number(this.j.Standart[max].C2_3))
-                            console.log("C24: ", Number(this.j.Standart[max].C2_4))
-                            console.log("C31: ", Number(this.j.Standart[max].C3_1))
-                            console.log("C32: ", Number(this.j.Standart[max].C3_2))
-                            console.log("C311: ", Number(this.j.Standart[max].C3_1_1))
-                            console.log("C321: ", Number(this.j.Standart[max].C3_2_1))
 
                             if (e.select == 1) { y += (Number(this.j.Standart[max].C2_1) * e.L * e.index) }
                             if (e.select == 2) { y += (Number(this.j.Standart[max].C2_2) * e.L * e.index) }
@@ -463,7 +450,6 @@ var app = new Vue({
                     this.Lines_two.forEach(function(e) {
                         if (e.L && e.L !== "0" && e.select !== "0" && this.Category == 2) {
                             //первый источник
-                            console.log(e.select)
                             if (e.select == 1) { y += (Number(this.j.Standart[max].C2_1) * e.L * e.index) }
                             if (e.select == 2) { y += (Number(this.j.Standart[max].C2_2) * e.L * e.index) }
                             if (e.select == 3) { y += (Number(this.j.Standart[max].C2_3) * e.L * e.index) }
@@ -505,7 +491,6 @@ var app = new Vue({
             })
 
             $('.BuildTP_radio_1').change(function(n) {
-                console.log("change: ", n.target.value)
                 self.BuildTP_radio_1 = n.target.value
             })
 
