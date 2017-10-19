@@ -435,7 +435,6 @@ var app = new Vue({
                     this.Lines_one.forEach(function(e) {
                         if (e.L && e.L !== "0" && e.select !== "0") {
                             //первый источник
-
                             if (e.select == 1) { y += (Number(this.j.Standart[max].C2_1) * e.L * e.index) }
                             if (e.select == 2) { y += (Number(this.j.Standart[max].C2_2) * e.L * e.index) }
                             if (e.select == 3) { y += (Number(this.j.Standart[max].C2_3) * e.L * e.index) }

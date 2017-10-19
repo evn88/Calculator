@@ -592,7 +592,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="/about/test/vue.min.js"></script>
 <script src="/about/test/calculate.js"></script>
 
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
