@@ -374,7 +374,7 @@ var app = new Vue({
 
                 //расчетная часть без строительства
                 y = N * Number(this.j.C1[cmax])
-
+                console.log("черновик", y)
                 //Строительство
                 if (this.Build && this.Calculate == 2) {
                     if (N <= 15) {
@@ -416,8 +416,6 @@ var app = new Vue({
 
                     if (N > 150) {
                         max = "min150"
-                        console.log("21: ", this.j.Standart.min150.C2_1)
-                        console.log("22: ", this.j.Standart.min150.C2_2)
                         if (this.VoltageClass == 1) {
                             this.showCheckbox([22, 23, 24, 31, 32, 321])
                         }
@@ -443,6 +441,7 @@ var app = new Vue({
                             if (e.select == 6) { y += (Number(this.j.Standart[max].C3_2) * e.L * e.index) }
                             if (e.select == 7) { y += (Number(this.j.Standart[max].C3_1_1) * e.L * e.index) }
                             if (e.select == 8) { y += (Number(this.j.Standart[max].C3_2_1) * e.L * e.index) }
+                            console.log("one line=", y)
                         }
                     }, this);
 
@@ -457,12 +456,14 @@ var app = new Vue({
                             if (e.select == 6) { y += (Number(this.j.Standart[max].C3_2) * e.L * e.index) }
                             if (e.select == 7) { y += (Number(this.j.Standart[max].C3_1_1) * e.L * e.index) }
                             if (e.select == 8) { y += (Number(this.j.Standart[max].C3_2_1) * e.L * e.index) }
+                            console.log("two line=", y)
                         }
                     }, this);
 
                     //строительство ТП
                     if (this.BuildTP && this.Calculate !== 0 && this.VoltageClass !== 2) {
                         y += (Number(this.j.Standart[max][this["BuildTP_radio_" + this.Calculate]]) * N)
+                        console.log("buildTP", y)
                     }
                 }
 
