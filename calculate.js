@@ -453,7 +453,7 @@ var app = new Vue({
                             if (e.select == 3) { y += (Number(this.j.Standart[max].C2_3) * e.L * e.index) }
                             if (e.select == 4) { y += (Number(this.j.Standart[max].C2_4) * e.L * e.index) }
                             if (e.select == 5) { y += (Number(this.j.Standart[max].C3_1) * e.L * e.index) }
-                            if (e.select == 6) { y += (Number(this.j.Standart[max].C3_2) * e.L * e.index) }
+                            if (e.select == 6) { y += (Number(this.j.Standart[max].C3_2) * e.L * e.index); console.log("c3_2", Number(this.j.Standart[max].C3_2) * e.L * e.index)}
                             if (e.select == 7) { y += (Number(this.j.Standart[max].C3_1_1) * e.L * e.index) }
                             if (e.select == 8) { y += (Number(this.j.Standart[max].C3_2_1) * e.L * e.index) }
                             console.log("two line=", y)
@@ -462,7 +462,7 @@ var app = new Vue({
 
                     //строительство ТП
                     if (this.BuildTP && this.Calculate !== 0 && this.VoltageClass !== 2) {
-                        y += (Number(this.j.Standart[max][this["BuildTP_radio_" + this.Calculate]]) * N)
+                        y += (Number(this.j.Standart[max][this["BuildTP_radio_" + this.Calculate]]) * N * Number(this.j.Z.TP))
                         console.log("buildTP", y)
                     }
                 }
