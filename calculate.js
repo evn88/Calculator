@@ -195,7 +195,8 @@ var app = new Vue({
         result: function(e) {
             if (e) {
                 e += e * 18 / 100 // +18% НДС
-                return (Math.round(e * 100) / 100) //округляем результаты
+                
+                return (Math.round(e * 100) / 100).toLocaleString() //округляем результаты
             } else {
                 return 0
             }

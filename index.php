@@ -384,7 +384,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                         </select>
                     </div>
                     <div class="long">
-                        <div class="left_text"><input type="number" placeholder="длина" v-model="item.L">
+                        <div class="left_text"><input type="number" step="0.01" placeholder="длина" v-model="item.L">
                             <span>км</span></div>
                         <div class="index">
                             <p>Индекс</p>
@@ -431,7 +431,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                         </select>
                     </div>
                     <div class="long">
-                        <div class="left_text"><input type="number" placeholder="длина" v-model="item.L">
+                        <div class="left_text"><input type="number" step="0.01" placeholder="длина" v-model="item.L">
                             <span>км</span></div>
                         <div class="index">
                             <p>Индекс</p>
