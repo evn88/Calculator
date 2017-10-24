@@ -367,7 +367,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                 <div class="index">
                     <p>Индекс изменения сметной стоимости за:</p>
                     <div class="sqrt">{{(j)?j.Z.quarter : ""}}</div>
-                    <p class="quart">квартал</p>
+                    <p class="quart">квартал 2017г</p>
                 </div>
                 <div class="source" v-for="item in Lines_one" :key="item.id">
                     <div class="select">
@@ -414,7 +414,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                 <div class="index">
                     <p>Индекс изменения сметной стоимости за:</p>
                     <div class="sqrt">{{(j)?j.Z.quarter : ""}}</div>
-                    <p class="quart">квартал</p>
+                    <p class="quart">квартал 2017г</p>
                 </div>
                 <div class="source" v-for="item in Lines_two" :key="item.id">
                     <div class="select">
@@ -462,7 +462,7 @@ $APPLICATION->SetTitle("Калькулятор технологического 
                         <div class="inLine">
                         <input type="checkbox" value="check" v-model="BuildTP">
                         <span class="jq-checkbox" :class="{ checked: BuildTP }"></span> Строительство ТП </div>
-                        <div class="indx">Индекс<span class="sqrt">{{(j)?j.Z.TP : ""}}</span></div>
+                        <div class="indx">Индекс <span class="hideMobile">изменения сметной стоимости за {{(j)?j.Z.quarter : ""}} квартал 2017г:</span> <span class="sqrt">{{(j)?j.Z.TP : ""}}</span></div>
                     </div>
                 </label>
             </div>
