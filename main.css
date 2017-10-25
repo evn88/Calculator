@@ -374,6 +374,13 @@ p.sourse_bottom {
     padding: 15px;
 }
 
+.forth_2 .index .hideMobile,
+.forth_2_small .index .hideMobile {
+font-family: 'Open Sans', sans-serif;
+font-size: 14px;
+color: #7d7d7d;
+}
+
 .sqrt {
     margin: 15px 0 15px 0;
     width: 30px;

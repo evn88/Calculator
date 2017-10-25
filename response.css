@@ -71,9 +71,6 @@
                 width: auto;
                 margin: 25px 40px 25px 40px;
             }
-            .index {
-                margin-left: 270px;
-            }
             .forth_2 .index p,
             .forth_2_small .index p {
                 white-space: nowrap;
@@ -154,6 +151,9 @@
             .total {
                 background-position: 350px;
                 background-size: cover;
+            }
+            .block .hideMobile {
+                display: none;
             }
         }
         
@@ -344,6 +344,10 @@
             .forth_2_small .index p {
                 white-space: normal;
             }
+            .forth_2 .index .hideMobile,
+            .forth_2_small .index .hideMobile {
+                display: none;
+            }
             .forth_2 .source,
             .forth_2_small .source {
                 width: auto;
@@ -414,6 +418,7 @@
             .block .in_2 {
                 padding-left: 10px;
             }
+
             #fifth {
                 margin: 0 15px 0 15px;
                 width: auto;
