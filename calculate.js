@@ -1,6 +1,8 @@
 /*
+ * @appName Calculator
  * @author  Vershkov Egor
  * @03/10/17
+ * @Framework Vue.js v2.5.1
  */
 
 $.getJSON('data.json', function(json) {
@@ -19,7 +21,7 @@ var app = new Vue({
         Show_BuildTP: true, //показывать блок строительства ТП
         BuildTP_radio_1: 0, //по мощности 
         BuildTP_radio_2: 0, //по стандартизированной
-        Calculate: 0, //расчет по power-мощности, standart-стандартизированной
+        Calculate: 0, //расчет по: power-мощности, standart-стандартизированной
         VoltageClass: 0, //Класс напряжения
         Lines_one: [{
             "id": 0,
