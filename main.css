@@ -145,7 +145,7 @@ span .jd-radio {
     position: relative;
     width: 25px;
     height: 25px;
-    background: url("img/checkbox.png") no-repeat;
+    background: url("checkbox.png") no-repeat;
     top: -2px;
 }
 
@@ -278,7 +278,7 @@ p.sourse_bottom {
 }
 
 .total {
-    background: white url("/about/test/bg.svg") no-repeat;
+    background: white url("bg.svg") no-repeat;
     background-position: right;
     border: #59778c 1px solid;
     margin-top: 25px;
