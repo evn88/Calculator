@@ -5,9 +5,16 @@
  * @Framework Vue.js v2.5.1
  */
 
-$.getJSON('data.json', function(json) {
-    app.j = json
-});
+// $.getJSON('data.json', function(json) {
+//     app.j = json
+// });
+fetch('data.json')
+    .then((response)=>{
+        return response.json();
+    })
+    .then((data)=>{
+        app.j = data
+    })
 
 var app = new Vue({
     el: '#calculate',
